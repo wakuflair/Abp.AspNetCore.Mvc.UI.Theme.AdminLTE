@@ -1,0 +1,37 @@
+﻿@page
+@model Volo.Abp.AspNetCore.Mvc.UI.Theme.AdminLTE.Pages.Account.RegisterModel
+@inherits Volo.Abp.Account.Web.Pages.Account.AccountPage
+
+<p class="login-box-msg">@L["Register"]</p>
+
+<form method="post">
+    <div class="form-group has-feedback">
+        <input asp-for="Input.UserName" class="form-control" placeholder="@L["UserName"]">
+        <span class="glyphicon glyphicon-user form-control-feedback"></span>
+        <span asp-validation-for="Input.UserName" class="text-danger"></span>
+    </div>
+    <div class="form-group has-feedback">
+        <input asp-for="Input.EmailAddress" class="form-control" placeholder="@L["EmailAddress"]">
+        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+        <span asp-validation-for="Input.EmailAddress" class="text-danger"></span>
+    </div>
+    <div class="form-group has-feedback">
+        <input asp-for="Input.Password" class="form-control" placeholder="@L["Password"]">
+        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+        <span asp-validation-for="Input.Password" class="text-danger"></span>
+    </div>
+    <div class="row">
+        <div class="col-xs-8">
+
+        </div>
+        <!-- /.col -->
+        <div class="col-xs-4">
+            <abp-button button-type="Primary" type="submit" class="btn btn-primary btn-block btn-flat">@L["Register"]</abp-button>
+        </div>
+        <!-- /.col -->
+    </div>
+</form>
+<strong>
+    @L["AlreadyRegistered"]
+    <a href="@Url.Page("./Login", new {returnUrl = Model.ReturnUrl, returnUrlHash = Model.ReturnUrlHash})" class="text-decoration-none">@L["Login"]</a>
+</strong>

@@ -77,7 +77,7 @@ namespace AdminLTEPro.Web
             var hostingEnvironment = context.Services.GetHostingEnvironment();
             var configuration = context.Services.GetConfiguration();
 
-
+            // 设置默认风格
             Configure<AbpThemingOptions>(options =>
             {
                 options.DefaultThemeName = "AdminLTE";

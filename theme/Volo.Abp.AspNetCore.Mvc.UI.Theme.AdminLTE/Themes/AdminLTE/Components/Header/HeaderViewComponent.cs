@@ -9,17 +9,9 @@ namespace Volo.Abp.AspNetCore.Mvc.UI.Theme.AdminLTE.Themes.AdminLTE.Components.H
 {
     public class HeaderViewComponent : AbpViewComponent
     {
-        private readonly IMenuManager _menuManager;
-
-        public HeaderViewComponent(IMenuManager menuManager)
+        public IViewComponentResult Invoke()
         {
-            _menuManager = menuManager;
-        }
-
-        public async Task<IViewComponentResult> InvokeAsync()
-        {
-            var menu = await _menuManager.GetAsync(StandardMenus.User);
-            return View("~/Themes/AdminLTE/Components/Header/Default.cshtml", menu);
+            return View("~/Themes/AdminLTE/Components/Header/Default.cshtml");
         }
     }
 }

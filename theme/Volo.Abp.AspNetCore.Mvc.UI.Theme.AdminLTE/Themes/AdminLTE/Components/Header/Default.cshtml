@@ -1,14 +1,17 @@
-﻿@using Volo.Abp.Users
-@using Volo.Abp.UI.Navigation
-@inject ICurrentUser CurrentUser
-@model ApplicationMenu
+﻿@using Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared.Components
+@using Volo.Abp.AspNetCore.Mvc.UI.Theme.AdminLTE.Themes.AdminLTE.Components.Toolbar.LanguageSwitch;
+@using Volo.Abp.AspNetCore.Mvc.UI.Theme.AdminLTE.Themes.AdminLTE.Components.Toolbar.UserMenu;
+@inject IBrandingProvider BrandingProvider
+@{
+    var pageTitle = ViewBag.Title == null ? BrandingProvider.AppName : ViewBag.Title; //TODO: Discard to get from Title
+}
 <header class="main-header">
     <!-- Logo -->
     <a href="/" class="logo">
         <!-- mini logo for sidebar mini 50x50 pixels -->
-        <span class="logo-mini"><b>A</b>LT</span>
+        <span class="logo-mini">@ViewBag.MiniTitle</span>
         <!-- logo for regular state and mobile devices -->
-        <span class="logo-lg"><b>Admin</b>LTE</span>
+        <span class="logo-lg">@pageTitle</span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
@@ -221,48 +224,10 @@
                         </li>
                     </ul>
                 </li>
-                <!-- User Account: style can be found in dropdown.less -->
-                <li class="dropdown user user-menu">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <img src="~/themes/adminlte/img/user2-160x160.jpg" class="user-image" alt="User Image">
-                        <span class="hidden-xs">@CurrentUser.UserName</span>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <!-- User image -->
-                        <li class="user-header">
-                            <img src="~/themes/adminlte/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 
-                            <p>
-                                @CurrentUser.UserName
-                                <small>@CurrentUser.Email</small>
-                            </p>
-                        </li>
-                        <!-- Menu Body -->
-                        <li class="user-body">
-                            <div class="row">
-                                <div class="col-xs-4 text-center">
-                                    <a href="#">Followers</a>
-                                </div>
-                                <div class="col-xs-4 text-center">
-                                    <a href="#">Sales</a>
-                                </div>
-                                <div class="col-xs-4 text-center">
-                                    <a href="#">Friends</a>
-                                </div>
-                            </div>
-                            <!-- /.row -->
-                        </li>
-                        <!-- Menu Footer-->
-                        <li class="user-footer">
-                            <div class="pull-left">
-                                <a href="~/Account/Manage" class="btn btn-default btn-flat">Profile</a>
-                            </div>
-                            <div class="pull-right">
-                                <a href="~/Account/Logout" class="btn btn-default btn-flat">Sign out</a>
-                            </div>
-                        </li>
-                    </ul>
-                </li>
+                @(await Component.InvokeAsync<UserMenuViewComponent>())
+
+                @(await Component.InvokeAsync<LanguageSwitchViewComponent>())
                 <!-- Control Sidebar Toggle Button -->
                 <li>
                     <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>

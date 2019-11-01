@@ -27,7 +27,7 @@ namespace Volo.Abp.AspNetCore.Mvc.UI.Theme.AdminLTE.Themes.AdminLTE.Components.M
 
         void SetMenuItemActivateCssClass(string pageUrl, ApplicationMenuItem menuItem = null, ApplicationMenu parentMenu = null)
         {
-            ApplicationMenuItemList withItems = menuItem?.Items ?? parentMenu.Items;
+            ApplicationMenuItemList withItems = menuItem?.Items ?? parentMenu?.Items;
 
             withItems.ForEach(m =>
             {

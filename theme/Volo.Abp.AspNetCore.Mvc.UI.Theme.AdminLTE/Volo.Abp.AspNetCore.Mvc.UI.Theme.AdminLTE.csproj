@@ -12,12 +12,19 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Remove="Pages\Account\Login.cshtml" />
+    <Content Remove="Pages\Account\Register.cshtml" />
+    <Content Remove="Pages\Account\_Layout.cshtml" />
+    <Content Remove="Pages\Account\_ViewStart.cshtml" />
     <Content Remove="Pages\_ViewImports.cshtml" />
     <Content Remove="Themes\AdminLTE\Components\ControlSidebar\Default.cshtml" />
     <Content Remove="Themes\AdminLTE\Components\Footer\Default.cshtml" />
     <Content Remove="Themes\AdminLTE\Components\Header\Default.cshtml" />
     <Content Remove="Themes\AdminLTE\Components\Menu\Default.cshtml" />
     <Content Remove="Themes\AdminLTE\Components\Menu\_MenuItem.cshtml" />
+    <Content Remove="Themes\AdminLTE\Components\PageAlerts\Default.cshtml" />
+    <Content Remove="Themes\AdminLTE\Components\Toolbar\LanguageSwitch\Default.cshtml" />
+    <Content Remove="Themes\AdminLTE\Components\Toolbar\UserMenu\Default.cshtml" />
     <Content Remove="Themes\AdminLTE\Layouts\Account.cshtml" />
     <Content Remove="Themes\AdminLTE\Layouts\Application.cshtml" />
     <Content Remove="Themes\AdminLTE\Layouts\Empty.cshtml" />
@@ -26,8 +33,17 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Remove="Pages\Account\_Layout.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Volo.Abp.Account.Web.IdentityServer" Version="1.0.2" />
     <PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.MultiTenancy" Version="1.0.2" />
     <PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared" Version="1.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\plugins\" />
   </ItemGroup>
 
 </Project>

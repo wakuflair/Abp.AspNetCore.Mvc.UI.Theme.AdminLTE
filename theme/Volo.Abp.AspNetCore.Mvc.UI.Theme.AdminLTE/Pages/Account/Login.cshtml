@@ -1,0 +1,102 @@
+﻿@page
+@using Volo.Abp.Account.Web.Settings
+@model Volo.Abp.AspNetCore.Mvc.UI.Theme.AdminLTE.Pages.Account.LoginModel
+@inherits Volo.Abp.Account.Web.Pages.Account.AccountPage
+@inject Volo.Abp.Settings.ISettingProvider SettingProvider
+@section styles {
+<!-- iCheck -->
+<link rel="stylesheet" href="~/plugins/iCheck/square/blue.css">
+}
+@section scripts {
+<!-- iCheck -->
+<script src="~/plugins/iCheck/icheck.min.js"></script>
+<script>
+    $(function () {
+        $('input').iCheck({
+            checkboxClass: 'icheckbox_square-blue',
+            radioClass: 'iradio_square-blue',
+            increaseArea: '20%' /* optional */
+        });
+    });
+</script>
+}
+@if (Model.EnableLocalLogin)
+{
+    <p class="login-box-msg">@L["Login"]</p>
+
+    <form method="post">
+        <input asp-for="ReturnUrl" />
+        <input asp-for="ReturnUrlHash" />
+        <div class="form-group has-feedback">
+            <input asp-for="LoginInput.UserNameOrEmailAddress" class="form-control" placeholder="@L["UserNameOrEmailAddress"]">
+            <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+            <span asp-validation-for="LoginInput.UserNameOrEmailAddress" class="text-danger"></span>
+        </div>
+        <div class="form-group has-feedback">
+            <input asp-for="LoginInput.Password" class="form-control" placeholder="@L["Password"]">
+            <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+            <span asp-validation-for="LoginInput.Password" class="text-danger"></span>
+        </div>
+        <div class="row">
+            <div class="col-xs-8">
+                <div class="checkbox icheck">
+                    <label>
+                        <input type="checkbox"> @L["RememberMe"]
+                    </label>
+                </div>
+            </div>
+            <!-- /.col -->
+            <div class="col-xs-4">
+                <abp-button type="submit" button-type="Primary" name="Action" value="Login" class="btn btn-primary btn-block btn-flat">@L["Login"]</abp-button>
+            </div>
+            <!-- /.col -->
+        </div>
+    </form>
+}
+@*<div class="social-auth-links text-center">
+        <p>- OR -</p>
+        <a href="#" class="btn btn-block btn-social btn-facebook btn-flat">
+            <i class="fa fa-facebook"></i> Sign in using
+            Facebook
+        </a>
+        <a href="#" class="btn btn-block btn-social btn-google btn-flat">
+            <i class="fa fa-google-plus"></i> Sign in using
+            Google+
+        </a>
+    </div>*@
+<!-- /.social-auth-links -->
+
+@if (string.Equals(await SettingProvider.GetOrNullAsync(AccountSettingNames.IsSelfRegistrationEnabled), "true", StringComparison.OrdinalIgnoreCase))
+{
+    <strong>
+        @L["AreYouANewUser"]
+        <a href="@Url.Page("./Register", new {returnUrl = Model.ReturnUrl, returnUrlHash = Model.ReturnUrlHash})" class="text-decoration-none">@L["Register"]</a>
+    </strong>
+}
+
+@*<a href="#">I forgot my password</a>
+    <br>
+    <a href="register.html" class="text-center">Register a new membership</a>*@
+
+@if (Model.VisibleExternalProviders.Any())
+{
+    <div class="col-md-6">
+        <h4>@L["UseAnotherServiceToLogIn"]</h4>
+        <form asp-page="./Login" asp-page-handler="ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" asp-route-returnUrlHash="@Model.ReturnUrlHash" method="post">
+            <input asp-for="ReturnUrl" />
+            <input asp-for="ReturnUrlHash" />
+            @foreach (var provider in Model.VisibleExternalProviders)
+            {
+                <button type="submit" class="btn btn-primary" name="provider" value="@provider.AuthenticationScheme" title="@L["GivenTenantIsNotAvailable", provider.DisplayName]">@provider.DisplayName</button>
+            }
+        </form>
+    </div>
+}
+
+@if (!Model.EnableLocalLogin && !Model.VisibleExternalProviders.Any())
+{
+    <div class="alert alert-warning">
+        <strong>@L["InvalidLoginRequest"]</strong>
+        @L["ThereAreNoLoginSchemesConfiguredForThisClient"]
+    </div>
+}
