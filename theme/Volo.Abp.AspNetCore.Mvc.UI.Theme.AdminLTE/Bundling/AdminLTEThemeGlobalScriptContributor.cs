@@ -9,13 +9,13 @@ namespace Volo.Abp.AspNetCore.Mvc.UI.Theme.AdminLTE.Bundling
     {
         public override void ConfigureBundle(BundleConfigurationContext context)
         {
-            context.Files.Clear();
+            //context.Files.Clear();
 
-            context.Files.Add("/libs/abp/core/abp.js");
-            context.Files.Add("/libs/jquery/jquery.min.js");
-            context.Files.Add("/libs/abp/jquery/abp.jquery.js");
-            context.Files.Add("/libs/jquery-validation/jquery.validate.js");
-            context.Files.Add("/libs/bootstrap/js/bootstrap.js");
+            context.Files.RemoveAll(t => t.Contains("/libs/jquery/") || t.Contains("/libs/bootstrap/"));
+
+            context.Files.Insert(1, "/libs/jquery/jquery.min.js");
+
+            context.Files.Insert(3, "/libs/bootstrap/js/bootstrap.js");
             context.Files.Add("/themes/adminlte/js/adminlte.js");
             context.Files.Add("/themes/adminlte/js/layout.js");
         }

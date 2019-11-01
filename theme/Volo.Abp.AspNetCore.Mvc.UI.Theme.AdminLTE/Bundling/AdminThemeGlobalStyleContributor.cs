@@ -12,7 +12,11 @@ namespace Volo.Abp.AspNetCore.Mvc.UI.Theme.AdminLTE.Bundling
             // 移除默认的style
             context.Files.Clear();
 
+            //context.Files.RemoveAll(t => t.Contains("/libs/@fortawesome/") || t.Contains("/libs/bootstrap/"));
+
             context.Files.Add("/libs/abp/core/abp.css");
+            //context.Files.Insert(1, "/libs/bootstrap/css/bootstrap.min.css");
+            //context.Files.Insert(2, "/libs/font-awesome/css/font-awesome.css");
             context.Files.Add("/libs/bootstrap/css/bootstrap.min.css");
             context.Files.Add("/libs/font-awesome/css/font-awesome.css");
             context.Files.Add("/libs/Ionicons/css/ionicons.min.css");
