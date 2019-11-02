@@ -41,6 +41,11 @@
             @await Component.InvokeAsync(typeof(WidgetStylesViewComponent))
 
             @await Component.InvokeLayoutHookAsync(LayoutHooks.Head.Last, StandardLayouts.Account)
+            <style type="text/css">
+                .modal-title{
+                    float: left;
+                }
+            </style>
         </head>
         <body class="hold-transition login-page">
             @await Component.InvokeLayoutHookAsync(LayoutHooks.Body.First, StandardLayouts.Account)
@@ -53,7 +58,7 @@
                 </div>
                 @(await Component.InvokeAsync<PageAlertsViewComponent>())
 
-                <a id="AbpTenantSwitchLink" href="javascript:;" class="btn btn-block btn-social btn-twitter" style="margin-bottom:10px;">
+                <a id="AbpTenantSwitchLink" href="javascript:;" class="btn btn-block btn-social btn-github" style="margin-bottom:10px;">
                     <i class="fa fa-group" style="font-size: 1.2em;"></i> @MultiTenancyStringLocalizer["Tenant"]
                     @if (CurrentTenant.Id == null)
                     {

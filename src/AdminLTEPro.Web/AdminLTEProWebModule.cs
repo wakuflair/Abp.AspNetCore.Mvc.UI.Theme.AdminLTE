@@ -48,9 +48,9 @@ namespace AdminLTEPro.Web
         typeof(AbpIdentityWebModule),
         typeof(AbpAccountWebIdentityServerModule),
         typeof(AbpAspNetCoreMvcUiBasicThemeModule),
-        typeof(AbpAspNetCoreMvcUiAdminLTEThemeModule),
         typeof(AbpAspNetCoreAuthenticationJwtBearerModule),
-        typeof(AbpTenantManagementWebModule)
+        typeof(AbpTenantManagementWebModule),
+        typeof(AbpAspNetCoreMvcUiAdminLTEThemeModule)
         )]
     public class AdminLTEProWebModule : AbpModule
     {
@@ -76,12 +76,6 @@ namespace AdminLTEPro.Web
         {
             var hostingEnvironment = context.Services.GetHostingEnvironment();
             var configuration = context.Services.GetConfiguration();
-
-            // 设置默认风格
-            Configure<AbpThemingOptions>(options =>
-            {
-                options.DefaultThemeName = "AdminLTE";
-            });
 
             ConfigureUrls(configuration);
             ConfigureAuthentication(context, configuration);

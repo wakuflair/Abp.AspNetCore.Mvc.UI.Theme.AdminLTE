@@ -13,9 +13,17 @@
 
   <ItemGroup>
     <Content Remove="Pages\Account\Login.cshtml" />
+    <Content Remove="Pages\Account\Manage.cshtml" />
     <Content Remove="Pages\Account\Register.cshtml" />
     <Content Remove="Pages\Account\_Layout.cshtml" />
     <Content Remove="Pages\Account\_ViewStart.cshtml" />
+    <Content Remove="Pages\Identity\Roles\CreateModal.cshtml" />
+    <Content Remove="Pages\Identity\Roles\EditModal.cshtml" />
+    <Content Remove="Pages\Identity\Roles\Index.cshtml" />
+    <Content Remove="Pages\Identity\Users\CreateModal.cshtml" />
+    <Content Remove="Pages\Identity\Users\EditModal.cshtml" />
+    <Content Remove="Pages\Identity\Users\Index.cshtml" />
+    <Content Remove="Pages\TenantManagement\Tenants\Index.cshtml" />
     <Content Remove="Pages\_ViewImports.cshtml" />
     <Content Remove="Themes\AdminLTE\Components\ControlSidebar\Default.cshtml" />
     <Content Remove="Themes\AdminLTE\Components\Footer\Default.cshtml" />
@@ -37,9 +45,23 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Pages\Identity\Roles\index.js" />
+    <None Remove="Pages\Identity\Users\index.js" />
+    <None Remove="Pages\TenantManagement\Tenants\index.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\Identity\Roles\index.js" />
+    <EmbeddedResource Include="Pages\Identity\Users\index.js" />
+    <EmbeddedResource Include="Pages\TenantManagement\Tenants\index.js" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Volo.Abp.Account.Web.IdentityServer" Version="1.0.2" />
     <PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.MultiTenancy" Version="1.0.2" />
     <PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared" Version="1.0.2" />
+    <PackageReference Include="Volo.Abp.Identity.Web" Version="1.0.2" />
+    <PackageReference Include="Volo.Abp.TenantManagement.Web" Version="1.0.2" />
   </ItemGroup>
 
   <ItemGroup>

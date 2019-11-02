@@ -1,0 +1,101 @@
+﻿@page
+@using Volo.Abp.UI.Navigation.Localization.Resource;
+@using Microsoft.AspNetCore.Authorization
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Volo.Abp.AspNetCore.Mvc.UI.Layout
+@using Volo.Abp.Identity
+@using Volo.Abp.Identity.Localization
+@using Volo.Abp.Identity.Web.Navigation
+@using Volo.Abp.Identity.Web.Pages.Identity.Roles
+@model Volo.Abp.AspNetCore.Mvc.UI.Theme.AdminLTE.Pages.Identity.Roles.IndexModel
+@inject IHtmlLocalizer<IdentityResource> L
+@inject IHtmlLocalizer<AbpUiNavigationResource> N
+@inject IAuthorizationService Authorization
+@inject IPageLayout PageLayout
+@{
+    PageLayout.Content.Title = L["Roles"].Value;
+    PageLayout.Content.BreadCrumb.Add(L["Menu:IdentityManagement"].Value);
+    PageLayout.Content.MenuItemName = IdentityMenuNames.Roles;
+}
+@section styles {
+<abp-style-bundle name="@typeof(IndexModel).FullName">
+    <abp-style src="/Pages/AbpPermissionManagement/permission-management-modal.css" />
+</abp-style-bundle>
+<style type="text/css">
+    .dropdown {
+        position: absolute;
+    }
+
+    .table-striped > tbody > tr > td > .action-button > button {
+        padding: 1px 5px;
+    }
+    .col-auto{
+        float: left;
+        margin-left:10px;
+    }
+    .col-auto:first-child{
+        margin-left:0;
+    }
+    .col{
+        float: right;
+        margin-right: 1px;
+    }
+    .dataTable_filters{
+        display:none;
+    }
+    .modal-title{
+                    float: left;
+                }
+</style>
+}
+@section scripts {
+<abp-script-bundle name="@typeof(IndexModel).FullName">
+    <abp-script src="/Pages/AbpPermissionManagement/permission-management-modal.js" />
+    <abp-script src="/Pages/identity/roles/index.js" />
+</abp-script-bundle>
+}
+<section class="content-header">
+    <h1>
+        @L["Roles"]
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="~/"><i class="fa fa-dashboard"></i> @L["Home"]</a></li>
+        <li>@N["Menu:Administration"]</li>
+        <li>@L["Menu:IdentityManagement"]</li>
+        <li class="active">@L["Roles"]</li>
+    </ol>
+</section>
+<section class="content">
+    <div id="IdentityRolesWrapper" class="box">
+        <div class="box-header">
+            <h3 class="box-title">
+                @if (await Authorization.IsGrantedAsync(IdentityPermissions.Roles.Create))
+                {
+                    <abp-button button-type="Primary" name="CreateRole" text="@L["NewRole"].Value" icon="plus" class="btn-xs" />
+                }
+            </h3>
+
+            <div class="box-tools">
+                <div class="input-group input-group-sm hidden-xs" style="width: 150px;">
+                    <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
+
+                    <div class="input-group-btn">
+                        <button id="tableSearch" type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body table-responsive no-padding" style="padding:0 10px !important;">
+            <abp-table striped-rows="true" class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>@L["Actions"]</th>
+                        <th>@L["RoleName"]</th>
+                    </tr>
+                </thead>
+            </abp-table>
+        </div>
+        <!-- /.box-body -->
+    </div>
+</section>

@@ -34,10 +34,8 @@ namespace Volo.Abp.AspNetCore.Mvc.UI.Theme.AdminLTE
             {
                 options.Themes.Add<AdminLTETheme>();
 
-                if (options.DefaultThemeName == null)
-                {
-                    options.DefaultThemeName = AdminLTETheme.Name;
-                }
+                // 应用主体风格
+                options.DefaultThemeName = AdminLTETheme.Name;
             });
 
             Configure<AbpVirtualFileSystemOptions>(options =>

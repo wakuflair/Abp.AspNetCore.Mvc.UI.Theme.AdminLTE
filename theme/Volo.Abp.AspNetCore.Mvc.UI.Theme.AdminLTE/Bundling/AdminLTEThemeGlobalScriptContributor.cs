@@ -10,7 +10,7 @@ namespace Volo.Abp.AspNetCore.Mvc.UI.Theme.AdminLTE.Bundling
         public override void ConfigureBundle(BundleConfigurationContext context)
         {
             //context.Files.Clear();
-
+            // || t.Contains("/libs/datatables.net")
             context.Files.RemoveAll(t => t.Contains("/libs/jquery/") || t.Contains("/libs/bootstrap/"));
 
             context.Files.Insert(1, "/libs/jquery/jquery.min.js");
