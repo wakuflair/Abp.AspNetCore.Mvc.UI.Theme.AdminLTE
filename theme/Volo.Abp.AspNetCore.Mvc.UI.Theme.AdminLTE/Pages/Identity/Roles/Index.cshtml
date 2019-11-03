@@ -1,4 +1,5 @@
 ﻿@page
+@using Volo.Abp.AspNetCore.Mvc.UI.Theming
 @using Volo.Abp.UI.Navigation.Localization.Resource;
 @using Microsoft.AspNetCore.Authorization
 @using Microsoft.AspNetCore.Mvc.Localization
@@ -12,7 +13,9 @@
 @inject IHtmlLocalizer<AbpUiNavigationResource> N
 @inject IAuthorizationService Authorization
 @inject IPageLayout PageLayout
+@inject IThemeManager ThemeManager
 @{
+    Layout = ThemeManager.CurrentTheme.GetApplicationLayout();
     PageLayout.Content.Title = L["Roles"].Value;
     PageLayout.Content.BreadCrumb.Add(L["Menu:IdentityManagement"].Value);
     PageLayout.Content.MenuItemName = IdentityMenuNames.Roles;
@@ -21,32 +24,6 @@
 <abp-style-bundle name="@typeof(IndexModel).FullName">
     <abp-style src="/Pages/AbpPermissionManagement/permission-management-modal.css" />
 </abp-style-bundle>
-<style type="text/css">
-    .dropdown {
-        position: absolute;
-    }
-
-    .table-striped > tbody > tr > td > .action-button > button {
-        padding: 1px 5px;
-    }
-    .col-auto{
-        float: left;
-        margin-left:10px;
-    }
-    .col-auto:first-child{
-        margin-left:0;
-    }
-    .col{
-        float: right;
-        margin-right: 1px;
-    }
-    .dataTable_filters{
-        display:none;
-    }
-    .modal-title{
-                    float: left;
-                }
-</style>
 }
 @section scripts {
 <abp-script-bundle name="@typeof(IndexModel).FullName">

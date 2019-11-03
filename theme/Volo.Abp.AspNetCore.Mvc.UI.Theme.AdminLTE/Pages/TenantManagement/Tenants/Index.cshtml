@@ -8,12 +8,10 @@
 @using Volo.Abp.TenantManagement.Web.Navigation
 @using Volo.Abp.TenantManagement.Web.Pages.TenantManagement.Tenants
 @model Volo.Abp.AspNetCore.Mvc.UI.Theme.AdminLTE.Pages.TenantManagement.Tenants.IndexModel
-
 @inject IHtmlLocalizer<AbpTenantManagementResource> L
 @inject IHtmlLocalizer<AbpUiNavigationResource> N
 @inject IAuthorizationService Authorization
 @inject IPageLayout PageLayout
-
 @{
     PageLayout.Content.Title = L["Tenants"].Value;
     PageLayout.Content.BreadCrumb.Add(L["Menu:TenantManagement"].Value);
@@ -21,59 +19,35 @@
 }
 @section styles {
 <style type="text/css">
-    .dropdown {
-        position: absolute;
-    }
-
-    .table-striped > tbody > tr > td > .action-button > button {
-        padding: 1px 5px;
-    }
-
-    .col-auto {
-        float: left;
-        margin-left: 10px;
-    }
-
-        .col-auto:first-child {
-            margin-left: 0;
-        }
-
-    .col {
-        float: right;
-        margin-right: 1px;
-    }
-
-    .dataTable_filters {
-        display: none;
-    }
-    .row{
+    div.table-responsive>div.dataTables_wrapper>div.row {
         margin:0;
     }
     div.dataTables_wrapper div.dataTables_length select {
-    width: 75px;
-    display: inline-block;
-}
-    div.dataTables_wrapper div.dataTables_length label {
-    font-weight: normal;
-    text-align: left;
-    white-space: nowrap;
-}
-    div.dataTables_wrapper div.dataTables_info {
-    padding-top: 8px;
-    white-space: nowrap;
-}
-    div.dataTables_wrapper div.dataTables_paginate {
-    margin: 0;
-    white-space: nowrap;
-    text-align: right;
-}
-    .pagination{
-        margin: 2px 0;
-    white-space: nowrap;
+        width: 75px;
+        display: inline-block;
     }
-    .modal-title{
-                    float: left;
-                }
+
+    div.dataTables_wrapper div.dataTables_length label {
+        font-weight: normal;
+        text-align: left;
+        white-space: nowrap;
+    }
+
+    div.dataTables_wrapper div.dataTables_info {
+        padding-top: 8px;
+        white-space: nowrap;
+    }
+
+    div.dataTables_wrapper div.dataTables_paginate {
+        margin: 0;
+        white-space: nowrap;
+        text-align: right;
+    }
+
+    .pagination {
+        margin: 2px 0;
+        white-space: nowrap;
+    }
 </style>
 }
 @section scripts {
@@ -120,8 +94,8 @@
             <abp-table striped-rows="true" class="table table-bordered table-striped" style="margin-bottom: 6px !important;">
                 <thead>
                     <tr>
-                    <th>@L["Actions"]</th>
-                    <th>@L["TenantName"]</th>
+                        <th>@L["Actions"]</th>
+                        <th>@L["TenantName"]</th>
                     </tr>
                 </thead>
             </abp-table>

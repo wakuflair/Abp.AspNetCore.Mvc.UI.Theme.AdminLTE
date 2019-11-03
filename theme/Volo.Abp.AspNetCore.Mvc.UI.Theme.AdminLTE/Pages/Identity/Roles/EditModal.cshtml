@@ -4,9 +4,7 @@
 @using Volo.Abp.Identity.Localization
 @model Volo.Abp.AspNetCore.Mvc.UI.Theme.AdminLTE.Pages.Identity.Roles.EditModalModel
 @inject IHtmlLocalizer<IdentityResource> L
-@{
-    Layout = null;
-}
+
 <form asp-page="/Identity/Roles/EditModal">
     <abp-modal>
         <abp-modal-header title="@L["Edit"].Value"></abp-modal-header>
@@ -21,7 +19,7 @@
             {
                 <abp-input asp-for="Role.Name" />
             }
-            <abp-input asp-for="Role.IsDefault" />
+            <abp-input asp-for="Role.IsDefault" class="minimal" />
             <abp-input asp-for="Role.IsPublic" />
         </abp-modal-body>
         <abp-modal-footer buttons="@(AbpModalButtons.Cancel|AbpModalButtons.Save)"></abp-modal-footer>

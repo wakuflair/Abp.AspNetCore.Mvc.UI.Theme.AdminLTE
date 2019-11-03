@@ -41,11 +41,6 @@
             @await Component.InvokeAsync(typeof(WidgetStylesViewComponent))
 
             @await Component.InvokeLayoutHookAsync(LayoutHooks.Head.Last, StandardLayouts.Account)
-            <style type="text/css">
-                .modal-title{
-                    float: left;
-                }
-            </style>
         </head>
         <body class="hold-transition login-page">
             @await Component.InvokeLayoutHookAsync(LayoutHooks.Body.First, StandardLayouts.Account)

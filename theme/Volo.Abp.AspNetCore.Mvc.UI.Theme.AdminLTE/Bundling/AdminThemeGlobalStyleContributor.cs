@@ -22,6 +22,7 @@ namespace Volo.Abp.AspNetCore.Mvc.UI.Theme.AdminLTE.Bundling
             context.Files.Add("/libs/Ionicons/css/ionicons.min.css");
             context.Files.Add("/themes/adminlte/css/AdminLTE.min.css");
             context.Files.Add("/themes/adminlte/css/skins/_all-skins.css");
+            context.Files.Add("/themes/adminlte/css/layout.css");
         }
     }
 }

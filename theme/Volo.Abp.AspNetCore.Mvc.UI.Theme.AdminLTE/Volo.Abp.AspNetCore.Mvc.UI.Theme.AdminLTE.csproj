@@ -12,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Remove="Pages\AbpPermissionManagement\PermissionManagementModal.cshtml" />
     <Content Remove="Pages\Account\Login.cshtml" />
     <Content Remove="Pages\Account\Manage.cshtml" />
     <Content Remove="Pages\Account\Register.cshtml" />
@@ -20,6 +21,8 @@
     <Content Remove="Pages\Identity\Roles\CreateModal.cshtml" />
     <Content Remove="Pages\Identity\Roles\EditModal.cshtml" />
     <Content Remove="Pages\Identity\Roles\Index.cshtml" />
+    <Content Remove="Pages\Identity\Roles\_Layout.cshtml" />
+    <Content Remove="Pages\Identity\Roles\_ViewStart.cshtml" />
     <Content Remove="Pages\Identity\Users\CreateModal.cshtml" />
     <Content Remove="Pages\Identity\Users\EditModal.cshtml" />
     <Content Remove="Pages\Identity\Users\Index.cshtml" />
@@ -38,6 +41,7 @@
     <Content Remove="Themes\AdminLTE\Layouts\Empty.cshtml" />
     <Content Remove="Themes\AdminLTE\_ViewImports.cshtml" />
     <Content Remove="Views\_ViewImports.cshtml" />
+    <Content Remove="wwwroot\themes\adminlte\css\layout.css" />
   </ItemGroup>
 
   <ItemGroup>
