@@ -1,31 +1,8 @@
-﻿.dropdown {
-    position: absolute;
-}
-
-.table-striped > tbody > tr > td > .action-button > button {
-    padding: 1px 5px;
-}
-
-.col-auto {
-    float: left;
-    margin-left: 10px;
-}
-
-    .col-auto:first-child {
-        margin-left: 0;
-    }
-
-.col {
-    float: right;
-    margin-right: 1px;
-}
-
-.dataTable_filters {
+﻿div.dataTable_filters {
     display: none;
 }
-.modal-title {
-    float: left;
-}
-.custom-control-label {
-    margin-left: 5px;
+
+div.dataTables_wrapper div.dataTables_length label {
+    margin-bottom: 0;
+    margin-top: 12px;
 }

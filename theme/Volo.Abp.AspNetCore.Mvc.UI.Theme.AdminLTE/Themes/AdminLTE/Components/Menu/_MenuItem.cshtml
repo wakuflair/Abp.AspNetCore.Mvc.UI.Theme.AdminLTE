@@ -4,23 +4,29 @@
 {
     if (Model.Url != null)
     {
-        <li class="@Model.CssClass"><a href="@(Model.Url ?? "#")"><i class="fa fa-circle-o"></i>@Model.DisplayName</a></li>
+        <li class="nav-item">
+            <a href="@(Model.Url ?? "#")" class="nav-link @Model.CssClass">
+                <i class="far fa-circle nav-icon"></i>
+                <p>@Model.DisplayName</p>
+            </a>
+        </li>
     }
 }
 else
 {
-    <li class="treeview @Model.CssClass">
-        <a href="#">
-            <i class="fa fa-circle-o"></i> <span>@Model.DisplayName</span>
-            <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-            </span>
-        </a>
-        <ul class="treeview-menu">
-            @foreach (var childMenuItem in Model.Items)
-            {
-                @await Html.PartialAsync("~/Themes/AdminLTE/Components/Menu/_MenuItem.cshtml", childMenuItem)
-            }
-        </ul>
-    </li>
+    <li class="nav-item has-treeview @Model.CssClass">
+        <a href="#" class="nav-link">
+            <i class="far fa-circle nav-icon"></i>
+            <p>
+                @Model.DisplayName
+            <i class="fas fa-angle-left right"></i>
+        </p>
+    </a>
+    <ul class="nav nav-treeview">
+        @foreach (var childMenuItem in Model.Items)
+        {
+            @await Html.PartialAsync("~/Themes/AdminLTE/Components/Menu/_MenuItem.cshtml", childMenuItem)
+        }
+    </ul>
+</li>
 }

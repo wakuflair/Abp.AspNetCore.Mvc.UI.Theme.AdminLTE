@@ -19,54 +19,56 @@
     PageLayout.Content.MenuItemName = IdentityMenuNames.Users;
 }
 @section styles {
-<abp-style-bundle name="@typeof(IndexModel).FullName">
-    <abp-style src="/Pages/AbpPermissionManagement/permission-management-modal.css" />
-</abp-style-bundle>
-  <!-- DataTables -->
-  <link rel="stylesheet" href="~/libs/datatables.net-bs/css/dataTables.bootstrap.min.css">
+    <abp-style-bundle name="@typeof(IndexModel).FullName">
+        <abp-style src="/Pages/AbpPermissionManagement/permission-management-modal.css" />
+    </abp-style-bundle>
 }
 @section scripts {
-    @*<script src="~/libs/datatables.net/js/jquery.dataTables.min.js" type="text/javascript"></script>
-    <script src="~/libs/datatables.net-bs/js/dataTables.bootstrap.min.js" type="text/javascript"></script>*@
-<abp-script-bundle name="@typeof(IndexModel).FullName">
-    <abp-script src="/Pages/AbpPermissionManagement/permission-management-modal.js" />
-    <abp-script src="/Pages/identity/users/index.js" />
-</abp-script-bundle>
+    <abp-script-bundle name="@typeof(IndexModel).FullName">
+        <abp-script src="/Pages/AbpPermissionManagement/permission-management-modal.js" />
+        <abp-script src="/Pages/identity/users/index.js" />
+    </abp-script-bundle>
 }
 <section class="content-header">
-    <h1>
-        @L["Users"]
-    </h1>
-    <ol class="breadcrumb">
-        <li><a href="~/"><i class="fa fa-dashboard"></i> @L["Home"]</a></li>
-        <li>@N["Menu:Administration"]</li>
-        <li>@L["Menu:IdentityManagement"]</li>
-        <li class="active">@L["Users"]</li>
-    </ol>
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>@L["Users"]</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="~/">@L["Home"]</a></li>
+                    <li class="breadcrumb-item">@N["Menu:Administration"]</li>
+                    <li class="breadcrumb-item">@L["Menu:IdentityManagement"]</li>
+                    <li class="breadcrumb-item active">@L["Users"]</li>
+                </ol>
+            </div>
+        </div>
+    </div>
 </section>
 <section class="content">
-    <div id="IdentityUsersWrapper" class="box">
-        <div class="box-header">
-            <h3 class="box-title">
+    <div id="IdentityUsersWrapper" class="card">
+        <div class="card-header">
+            <h3 class="card-title">
                 @if (await Authorization.IsGrantedAsync(IdentityPermissions.Users.Create))
                 {
                     <abp-button button-type="Primary" name="CreateUser" text="@L["NewUser"].Value" icon="plus" class="btn-xs" />
                 }
             </h3>
 
-            <div class="box-tools">
-                <div class="input-group input-group-sm hidden-xs" style="width: 150px;">
-                    <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
+            <div class="card-tools">
+                <div class="input-group input-group-sm" style="width: 150px;">
+                    <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
 
-                    <div class="input-group-btn">
-                        <button id="tableSearch" type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                    <div class="input-group-append">
+                        <button id="tableSearch" type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
                     </div>
                 </div>
             </div>
         </div>
         <!-- /.box-header -->
-        <div class="box-body table-responsive no-padding" style="padding:0 10px !important;">
-            <abp-table striped-rows="true" class="table table-bordered table-striped" style="margin-top: 0px !important;">
+        <div class="card-body">
+            <abp-table striped-rows="true" class="table table-bordered table-hover">
                 <thead>
                     <tr>
                         <th>@L["Actions"]</th>

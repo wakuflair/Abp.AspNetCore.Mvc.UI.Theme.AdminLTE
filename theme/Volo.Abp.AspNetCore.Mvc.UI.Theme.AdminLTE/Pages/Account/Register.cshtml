@@ -5,33 +5,44 @@
 <p class="login-box-msg">@L["Register"]</p>
 
 <form method="post">
-    <div class="form-group has-feedback">
+    <div class="input-group mb-3">
         <input asp-for="Input.UserName" class="form-control" placeholder="@L["UserName"]">
-        <span class="glyphicon glyphicon-user form-control-feedback"></span>
+        <div class="input-group-append">
+            <div class="input-group-text">
+                <span class="fas fa-user"></span>
+            </div>
+        </div>
         <span asp-validation-for="Input.UserName" class="text-danger"></span>
     </div>
-    <div class="form-group has-feedback">
+    <div class="input-group mb-3">
         <input asp-for="Input.EmailAddress" class="form-control" placeholder="@L["EmailAddress"]">
-        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+        <div class="input-group-append">
+            <div class="input-group-text">
+                <span class="fas fa-envelope"></span>
+            </div>
+        </div>
         <span asp-validation-for="Input.EmailAddress" class="text-danger"></span>
     </div>
-    <div class="form-group has-feedback">
+    <div class="input-group mb-3">
         <input asp-for="Input.Password" class="form-control" placeholder="@L["Password"]">
-        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+        <div class="input-group-append">
+            <div class="input-group-text">
+                <span class="fas fa-lock"></span>
+            </div>
+        </div>
         <span asp-validation-for="Input.Password" class="text-danger"></span>
     </div>
     <div class="row">
-        <div class="col-xs-8">
+        <div class="col-8">
 
         </div>
         <!-- /.col -->
-        <div class="col-xs-4">
-            <abp-button button-type="Primary" type="submit" class="btn btn-primary btn-block btn-flat">@L["Register"]</abp-button>
+        <div class="col-4">
+            <abp-button button-type="Primary" type="submit" class="btn btn-primary btn-block">@L["Register"]</abp-button>
         </div>
         <!-- /.col -->
     </div>
 </form>
-<strong>
-    @L["AlreadyRegistered"]
-    <a href="@Url.Page("./Login", new {returnUrl = Model.ReturnUrl, returnUrlHash = Model.ReturnUrlHash})" class="text-decoration-none">@L["Login"]</a>
-</strong>
+
+@L["AlreadyRegistered"]
+<a href="@Url.Page("./Login", new {returnUrl = Model.ReturnUrl, returnUrlHash = Model.ReturnUrlHash})" class="text-decoration-none">@L["Login"]</a>

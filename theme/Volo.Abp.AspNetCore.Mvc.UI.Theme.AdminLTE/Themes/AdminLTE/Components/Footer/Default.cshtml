@@ -3,10 +3,11 @@
 @{
     var pageTitle = ViewBag.Title == null ? BrandingProvider.AppName : ViewBag.Title; //TODO: Discard to get from Title
 }
+
 <footer class="main-footer">
-    <div class="pull-right hidden-xs">
-        <b>Version</b> 2.4.18
+    <strong>Copyright &copy; 2014-@DateTime.Now.Year <a href="http://adminlte.io">@pageTitle</a>.</strong>
+    All rights reserved.
+    <div class="float-right d-none d-sm-inline-block">
+        <b>Version</b> 3.0.0
     </div>
-    <strong>Copyright &copy; 2014-@DateTime.Now.Year <a href="#">@pageTitle</a>.</strong> All rights
-    reserved.
 </footer>
