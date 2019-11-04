@@ -19,37 +19,37 @@
 }
 @section styles {
     @*<style type="text/css">
-        div.table-responsive > div.dataTables_wrapper > div.row {
-            margin: 0;
-        }
+            div.table-responsive > div.dataTables_wrapper > div.row {
+                margin: 0;
+            }
 
-        div.dataTables_wrapper div.dataTables_length select {
-            width: 75px;
-            display: inline-block;
-        }
+            div.dataTables_wrapper div.dataTables_length select {
+                width: 75px;
+                display: inline-block;
+            }
 
-        div.dataTables_wrapper div.dataTables_length label {
-            font-weight: normal;
-            text-align: left;
-            white-space: nowrap;
-        }
+            div.dataTables_wrapper div.dataTables_length label {
+                font-weight: normal;
+                text-align: left;
+                white-space: nowrap;
+            }
 
-        div.dataTables_wrapper div.dataTables_info {
-            padding-top: 8px;
-            white-space: nowrap;
-        }
+            div.dataTables_wrapper div.dataTables_info {
+                padding-top: 8px;
+                white-space: nowrap;
+            }
 
-        div.dataTables_wrapper div.dataTables_paginate {
-            margin: 0;
-            white-space: nowrap;
-            text-align: right;
-        }
+            div.dataTables_wrapper div.dataTables_paginate {
+                margin: 0;
+                white-space: nowrap;
+                text-align: right;
+            }
 
-        .pagination {
-            margin: 2px 0;
-            white-space: nowrap;
-        }
-    </style>*@
+            .pagination {
+                margin: 2px 0;
+                white-space: nowrap;
+            }
+        </style>*@
 }
 @section scripts {
     <abp-script-bundle name="@typeof(IndexModel).FullName">
@@ -77,36 +77,39 @@
     </div>
 </section>
 <section class="content">
-    <div id="TenantsWrapper" class="card">
-        <div class="card-header">
-            <h3 class="card-title">
-                @if (await Authorization.IsGrantedAsync(TenantManagementPermissions.Tenants.Create))
-                {
-                    <abp-button button-type="Primary" name="CreateTenant" icon="plus" text="@L["NewTenant"].Value" class="btn-xs" />
-                }
-            </h3>
+    <div class="container-fluid">
+        <div id="TenantsWrapper" class="card">
+            <div class="card-header">
+                <h3 class="card-title">
+                    @if (await Authorization.IsGrantedAsync(TenantManagementPermissions.Tenants.Create))
+                    {
+                        <abp-button button-type="Primary" name="CreateTenant" icon="plus" text="@L["NewTenant"].Value" class="btn-xs" />
+                    }
+                </h3>
 
-            <div class="card-tools">
-                <div class="input-group input-group-sm" style="width: 150px;">
-                    <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+                <div class="card-tools">
+                    <div class="input-group input-group-sm" style="width: 150px;">
+                        <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
 
-                    <div class="input-group-append">
-                        <button id="tableSearch" type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
+                        <div class="input-group-append">
+                            <button id="tableSearch" type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
+                        </div>
                     </div>
                 </div>
             </div>
+            <!-- /.box-header -->
+            <div class="card-body">
+                <abp-table striped-rows="true" class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>@L["Actions"]</th>
+                            <th>@L["TenantName"]</th>
+                        </tr>
+                    </thead>
+                </abp-table>
+            </div>
+            <!-- /.box-body -->
         </div>
-        <!-- /.box-header -->
-        <div class="card-body">
-            <abp-table striped-rows="true" class="table table-bordered table-hover">
-                <thead>
-                    <tr>
-                        <th>@L["Actions"]</th>
-                        <th>@L["TenantName"]</th>
-                    </tr>
-                </thead>
-            </abp-table>
-        </div>
-        <!-- /.box-body -->
     </div>
+
 </section>
