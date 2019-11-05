@@ -29,6 +29,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Remove="Localization\AdminLTE\cs.json" />
+    <Content Remove="Localization\AdminLTE\en.json" />
+    <Content Remove="Localization\AdminLTE\pl.json" />
+    <Content Remove="Localization\AdminLTE\pt-BR.json" />
+    <Content Remove="Localization\AdminLTE\tr.json" />
+    <Content Remove="Localization\AdminLTE\vi.json" />
+    <Content Remove="Localization\AdminLTE\zh-Hans.json" />
     <Content Remove="Pages\Account\Login.cshtml" />
     <Content Remove="Pages\Account\Manage.cshtml" />
     <Content Remove="Pages\Account\Register.cshtml" />
@@ -76,6 +83,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Localization\AdminLTE\cs.json" />
+    <EmbeddedResource Include="Localization\AdminLTE\en.json" />
+    <EmbeddedResource Include="Localization\AdminLTE\pl.json" />
+    <EmbeddedResource Include="Localization\AdminLTE\pt-BR.json" />
+    <EmbeddedResource Include="Localization\AdminLTE\tr.json" />
+    <EmbeddedResource Include="Localization\AdminLTE\vi.json" />
+    <EmbeddedResource Include="Localization\AdminLTE\zh-Hans.json" />
     <EmbeddedResource Include="Pages\Identity\Roles\index.js" />
     <EmbeddedResource Include="Pages\Identity\Users\index.js" />
     <EmbeddedResource Include="Pages\TenantManagement\Tenants\index.js" />

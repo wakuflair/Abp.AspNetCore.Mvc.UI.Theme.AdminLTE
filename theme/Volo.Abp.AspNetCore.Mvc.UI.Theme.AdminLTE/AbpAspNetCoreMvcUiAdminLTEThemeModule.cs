@@ -4,11 +4,14 @@ using System;
 using Volo.Abp.AspNetCore.Mvc.UI.Bundling;
 using Volo.Abp.AspNetCore.Mvc.UI.MultiTenancy;
 using Volo.Abp.AspNetCore.Mvc.UI.Theme.AdminLTE.Bundling;
+using Volo.Abp.AspNetCore.Mvc.UI.Theme.AdminLTE.Localization;
 using Volo.Abp.AspNetCore.Mvc.UI.Theme.AdminLTE.Toolbars;
 using Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared;
 using Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared.Bundling;
 using Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared.Toolbars;
 using Volo.Abp.AspNetCore.Mvc.UI.Theming;
+using Volo.Abp.Localization;
+using Volo.Abp.Localization.Resources.AbpValidation;
 using Volo.Abp.Modularity;
 using Volo.Abp.VirtualFileSystem;
 
@@ -41,6 +44,14 @@ namespace Volo.Abp.AspNetCore.Mvc.UI.Theme.AdminLTE
             Configure<AbpVirtualFileSystemOptions>(options =>
             {
                 options.FileSets.AddEmbedded<AbpAspNetCoreMvcUiAdminLTEThemeModule>("Volo.Abp.AspNetCore.Mvc.UI.Theme.AdminLTE");
+            });
+
+            Configure<AbpLocalizationOptions>(options =>
+            {
+                options.Resources
+                    .Add<AdminLTEResource>("en")
+                    .AddBaseTypes(typeof(AbpValidationResource))
+                    .AddVirtualJson("/Localization/AdminLTE");
             });
 
             Configure<AbpToolbarOptions>(options =>
