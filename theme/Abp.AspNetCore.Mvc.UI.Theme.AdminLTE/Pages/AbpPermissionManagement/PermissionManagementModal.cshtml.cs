@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Volo.Abp.PermissionManagement;
 
-namespace Volo.Abp.AspNetCore.Mvc.UI.Theme.AdminLTE.Pages.AbpPermissionManagement
+namespace Abp.AspNetCore.Mvc.UI.Theme.AdminLTE.Pages.AbpPermissionManagement
 {
     public class PermissionManagementModal : Volo.Abp.PermissionManagement.Web.Pages.AbpPermissionManagement.PermissionManagementModal
     {
