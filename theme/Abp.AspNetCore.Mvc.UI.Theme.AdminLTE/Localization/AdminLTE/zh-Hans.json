@@ -1,6 +1,9 @@
 {
-    "culture": "zh-Hans",
-    "texts": {
-      "Nav:Home": "首页"
-    }
+  "culture": "zh-Hans",
+  "texts": {
+    "Nav:Home": "首页",
+    "Nav:Contact": "联系我们",
+    "Input:Search": "检索",
+    "CtrlSideBar:Title": "自定义AdminLTE",
   }
+}

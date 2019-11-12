@@ -37,6 +37,7 @@ using Volo.Abp.UI;
 using Volo.Abp.UI.Navigation;
 using Volo.Abp.VirtualFileSystem;
 using Volo.Abp.AspNetCore.Mvc.UI.Theming;
+using AdminLTEProWebModule = AdminLTEPro.Web.AdminLTEProWebModule;
 
 namespace AdminLTEPro.Web
 {
@@ -126,6 +127,9 @@ namespace AdminLTEPro.Web
                     options.FileSets.ReplaceEmbeddedByPhysical<AdminLTEProApplicationContractsModule>(Path.Combine(hostingEnvironment.ContentRootPath, $"..{Path.DirectorySeparatorChar}AdminLTEPro.Application.Contracts"));
                     options.FileSets.ReplaceEmbeddedByPhysical<AdminLTEProApplicationModule>(Path.Combine(hostingEnvironment.ContentRootPath, $"..{Path.DirectorySeparatorChar}AdminLTEPro.Application"));
                     options.FileSets.ReplaceEmbeddedByPhysical<AdminLTEProWebModule>(hostingEnvironment.ContentRootPath);
+
+                    // 主题文件
+                    options.FileSets.ReplaceEmbeddedByPhysical<AbpAspNetCoreMvcUiAdminLTEThemeModule>(Path.Combine(hostingEnvironment.ContentRootPath, $"..{Path.DirectorySeparatorChar}..{Path.DirectorySeparatorChar}theme{Path.DirectorySeparatorChar}Abp.AspNetCore.Mvc.UI.Theme.AdminLTE"));
                 });
             }
         }

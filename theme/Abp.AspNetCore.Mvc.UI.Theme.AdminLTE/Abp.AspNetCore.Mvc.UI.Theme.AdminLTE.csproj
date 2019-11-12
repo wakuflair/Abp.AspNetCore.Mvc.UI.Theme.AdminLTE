@@ -16,20 +16,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Remove="Pages\AbpPermissionManagement\**" />
-    <Content Remove="Pages\AbpPermissionManagement\**" />
-    <EmbeddedResource Remove="Pages\AbpPermissionManagement\**" />
-    <None Remove="Pages\AbpPermissionManagement\**" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Remove="Pages\Identity\Roles\CreateModal.cshtml.cs" />
-    <Compile Remove="Pages\Identity\Roles\EditModal.cshtml.cs" />
-    <Compile Remove="Pages\Identity\Users\CreateModal.cshtml.cs" />
-    <Compile Remove="Pages\Identity\Users\EditModal.cshtml.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Content Remove="Localization\AdminLTE\cs.json" />
     <Content Remove="Localization\AdminLTE\en.json" />
     <Content Remove="Localization\AdminLTE\pl.json" />
@@ -69,12 +55,6 @@
 
   <ItemGroup>
     <EmbeddedResource Remove="Pages\Account\_Layout.cshtml" />
-    <EmbeddedResource Remove="Pages\Identity\Roles\CreateModal.cshtml" />
-    <EmbeddedResource Remove="Pages\Identity\Roles\EditModal.cshtml" />
-    <EmbeddedResource Remove="Pages\Identity\Roles\_Layout.cshtml" />
-    <EmbeddedResource Remove="Pages\Identity\Roles\_ViewStart.cshtml" />
-    <EmbeddedResource Remove="Pages\Identity\Users\CreateModal.cshtml" />
-    <EmbeddedResource Remove="Pages\Identity\Users\EditModal.cshtml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -106,6 +86,10 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\plugins\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Pages\AbpPermissionManagement\PermissionManagementModal.cshtml" />
   </ItemGroup>
 
 </Project>

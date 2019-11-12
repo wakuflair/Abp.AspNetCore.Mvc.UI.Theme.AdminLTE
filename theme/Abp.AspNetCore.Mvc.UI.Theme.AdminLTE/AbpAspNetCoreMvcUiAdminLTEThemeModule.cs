@@ -49,7 +49,6 @@ namespace Abp.AspNetCore.Mvc.UI.Theme.AdminLTE
             {
                 options.Resources
                     .Add<AdminLTEResource>("en")
-                    .AddBaseTypes(typeof(AbpValidationResource))
                     .AddVirtualJson("/Localization/AdminLTE");
             });
 
