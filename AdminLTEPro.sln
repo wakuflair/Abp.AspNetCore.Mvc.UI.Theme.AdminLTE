@@ -41,7 +41,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdminLTEPro.DbMigrator", "s
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "theme", "theme", "{E2AD7EC8-2043-43D6-8DB5-8F983F5E9442}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Volo.Abp.AspNetCore.Mvc.UI.Theme.AdminLTE", "theme\Volo.Abp.AspNetCore.Mvc.UI.Theme.AdminLTE\Volo.Abp.AspNetCore.Mvc.UI.Theme.AdminLTE.csproj", "{1E15BFF2-347D-4ED9-A980-DE00FD2673AB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Abp.AspNetCore.Mvc.UI.Theme.AdminLTE", "theme\Abp.AspNetCore.Mvc.UI.Theme.AdminLTE\Abp.AspNetCore.Mvc.UI.Theme.AdminLTE.csproj", "{1E15BFF2-347D-4ED9-A980-DE00FD2673AB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using Abp.AspNetCore.Mvc.UI.Theme.AdminLTE;
 using Localization.Resources.AbpUi;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Builder;
@@ -36,7 +37,6 @@ using Volo.Abp.UI;
 using Volo.Abp.UI.Navigation;
 using Volo.Abp.VirtualFileSystem;
 using Volo.Abp.AspNetCore.Mvc.UI.Theming;
-using Volo.Abp.AspNetCore.Mvc.UI.Theme.AdminLTE;
 
 namespace AdminLTEPro.Web
 {
