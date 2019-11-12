@@ -1,0 +1,111 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <ApplicationIcon />
+    <OutputType>Library</OutputType>
+    <StartupObject />
+    <AssemblyName>Abp.AspNetCore.Mvc.UI.Theme.AdminLTE</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Themes\**\*.cshtml" />
+    <EmbeddedResource Include="Pages\**\*.cshtml" />
+    <EmbeddedResource Include="Views\**\*.cshtml" />
+    <EmbeddedResource Include="wwwroot\**\*.*" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Pages\AbpPermissionManagement\**" />
+    <Content Remove="Pages\AbpPermissionManagement\**" />
+    <EmbeddedResource Remove="Pages\AbpPermissionManagement\**" />
+    <None Remove="Pages\AbpPermissionManagement\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Pages\Identity\Roles\CreateModal.cshtml.cs" />
+    <Compile Remove="Pages\Identity\Roles\EditModal.cshtml.cs" />
+    <Compile Remove="Pages\Identity\Users\CreateModal.cshtml.cs" />
+    <Compile Remove="Pages\Identity\Users\EditModal.cshtml.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Localization\AdminLTE\cs.json" />
+    <Content Remove="Localization\AdminLTE\en.json" />
+    <Content Remove="Localization\AdminLTE\pl.json" />
+    <Content Remove="Localization\AdminLTE\pt-BR.json" />
+    <Content Remove="Localization\AdminLTE\tr.json" />
+    <Content Remove="Localization\AdminLTE\vi.json" />
+    <Content Remove="Localization\AdminLTE\zh-Hans.json" />
+    <Content Remove="Pages\Account\Login.cshtml" />
+    <Content Remove="Pages\Account\Manage.cshtml" />
+    <Content Remove="Pages\Account\Register.cshtml" />
+    <Content Remove="Pages\Account\_Layout.cshtml" />
+    <Content Remove="Pages\Account\_ViewStart.cshtml" />
+    <Content Remove="Pages\Identity\Roles\CreateModal.cshtml" />
+    <Content Remove="Pages\Identity\Roles\EditModal.cshtml" />
+    <Content Remove="Pages\Identity\Roles\Index.cshtml" />
+    <Content Remove="Pages\Identity\Roles\_Layout.cshtml" />
+    <Content Remove="Pages\Identity\Roles\_ViewStart.cshtml" />
+    <Content Remove="Pages\Identity\Users\CreateModal.cshtml" />
+    <Content Remove="Pages\Identity\Users\EditModal.cshtml" />
+    <Content Remove="Pages\Identity\Users\Index.cshtml" />
+    <Content Remove="Pages\TenantManagement\Tenants\Index.cshtml" />
+    <Content Remove="Pages\_ViewImports.cshtml" />
+    <Content Remove="Themes\AdminLTE\Components\ControlSidebar\Default.cshtml" />
+    <Content Remove="Themes\AdminLTE\Components\Footer\Default.cshtml" />
+    <Content Remove="Themes\AdminLTE\Components\Header\Default.cshtml" />
+    <Content Remove="Themes\AdminLTE\Components\Menu\Default.cshtml" />
+    <Content Remove="Themes\AdminLTE\Components\Menu\_MenuItem.cshtml" />
+    <Content Remove="Themes\AdminLTE\Components\PageAlerts\Default.cshtml" />
+    <Content Remove="Themes\AdminLTE\Components\Toolbar\LanguageSwitch\Default.cshtml" />
+    <Content Remove="Themes\AdminLTE\Components\Toolbar\UserMenu\Default.cshtml" />
+    <Content Remove="Themes\AdminLTE\Layouts\Account.cshtml" />
+    <Content Remove="Themes\AdminLTE\Layouts\Application.cshtml" />
+    <Content Remove="Themes\AdminLTE\Layouts\Empty.cshtml" />
+    <Content Remove="Themes\AdminLTE\_ViewImports.cshtml" />
+    <Content Remove="Views\_ViewImports.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="Pages\Account\_Layout.cshtml" />
+    <EmbeddedResource Remove="Pages\Identity\Roles\CreateModal.cshtml" />
+    <EmbeddedResource Remove="Pages\Identity\Roles\EditModal.cshtml" />
+    <EmbeddedResource Remove="Pages\Identity\Roles\_Layout.cshtml" />
+    <EmbeddedResource Remove="Pages\Identity\Roles\_ViewStart.cshtml" />
+    <EmbeddedResource Remove="Pages\Identity\Users\CreateModal.cshtml" />
+    <EmbeddedResource Remove="Pages\Identity\Users\EditModal.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Pages\Identity\Roles\index.js" />
+    <None Remove="Pages\Identity\Users\index.js" />
+    <None Remove="Pages\TenantManagement\Tenants\index.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Localization\AdminLTE\cs.json" />
+    <EmbeddedResource Include="Localization\AdminLTE\en.json" />
+    <EmbeddedResource Include="Localization\AdminLTE\pl.json" />
+    <EmbeddedResource Include="Localization\AdminLTE\pt-BR.json" />
+    <EmbeddedResource Include="Localization\AdminLTE\tr.json" />
+    <EmbeddedResource Include="Localization\AdminLTE\vi.json" />
+    <EmbeddedResource Include="Localization\AdminLTE\zh-Hans.json" />
+    <EmbeddedResource Include="Pages\Identity\Roles\index.js" />
+    <EmbeddedResource Include="Pages\Identity\Users\index.js" />
+    <EmbeddedResource Include="Pages\TenantManagement\Tenants\index.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Volo.Abp.Account.Web.IdentityServer" Version="1.0.2" />
+    <PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.MultiTenancy" Version="1.0.2" />
+    <PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared" Version="1.0.2" />
+    <PackageReference Include="Volo.Abp.Identity.Web" Version="1.0.2" />
+    <PackageReference Include="Volo.Abp.TenantManagement.Web" Version="1.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\plugins\" />
+  </ItemGroup>
+
+</Project>
