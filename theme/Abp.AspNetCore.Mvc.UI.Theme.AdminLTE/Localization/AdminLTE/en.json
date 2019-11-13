@@ -4,6 +4,7 @@
     "Nav:Home": "Home",
     "Nav:Contact": "Contact",
     "Input:Search": "Search",
-    "CtrlSideBar:Title": "Customize AdminLTE",
+    "AllRightsReserved": "All rights reserved",
+    "Version": "Version",
   }
 }

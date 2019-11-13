@@ -1,13 +1,18 @@
-﻿@using Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared.Components
+﻿@using Abp.AspNetCore.Mvc.UI.Theme.AdminLTE.Localization
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared.Components
 @inject IBrandingProvider BrandingProvider
+@inject IHtmlLocalizer<AdminLTEResource> TL
+
 @{
     var pageTitle = ViewBag.Title == null ? BrandingProvider.AppName : ViewBag.Title; //TODO: Discard to get from Title
+    var version = ViewBag.Version == null ? "1.0.0" : ViewBag.Version;
 }
 
 <footer class="main-footer">
     <strong>Copyright &copy; 2014-@DateTime.Now.Year <a href="http://adminlte.io">@pageTitle</a>.</strong>
-    All rights reserved.
+    @TL["AllRightsReserved"].
     <div class="float-right d-none d-sm-inline-block">
-        <b>Version</b> 3.0.0
+        <b>@TL["Version"]</b> @version
     </div>
 </footer>
