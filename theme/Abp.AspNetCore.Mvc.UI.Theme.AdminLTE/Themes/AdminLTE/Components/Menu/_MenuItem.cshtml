@@ -6,7 +6,7 @@
     {
         <li class="nav-item">
             <a href="@(Model.Url ?? "#")" class="nav-link @Model.CssClass">
-                <i class="far fa-circle nav-icon"></i>
+                <i class="far @Model.Icon nav-icon"></i>
                 <p>@Model.DisplayName</p>
             </a>
         </li>
@@ -16,7 +16,7 @@ else
 {
     <li class="nav-item has-treeview @Model.CssClass">
         <a href="#" class="nav-link">
-            <i class="far fa-circle nav-icon"></i>
+            <i class="far @Model.Icon nav-icon"></i>
             <p>
                 @Model.DisplayName
             <i class="fas fa-angle-left right"></i>
