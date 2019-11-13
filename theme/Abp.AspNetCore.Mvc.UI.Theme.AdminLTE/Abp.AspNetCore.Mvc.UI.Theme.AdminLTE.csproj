@@ -16,6 +16,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Remove="Pages\AbpPermissionManagement\**" />
+    <Content Remove="Pages\AbpPermissionManagement\**" />
+    <EmbeddedResource Remove="Pages\AbpPermissionManagement\**" />
+    <None Remove="Pages\AbpPermissionManagement\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Remove="Localization\AdminLTE\cs.json" />
     <Content Remove="Localization\AdminLTE\en.json" />
     <Content Remove="Localization\AdminLTE\pl.json" />
@@ -28,13 +35,7 @@
     <Content Remove="Pages\Account\Register.cshtml" />
     <Content Remove="Pages\Account\_Layout.cshtml" />
     <Content Remove="Pages\Account\_ViewStart.cshtml" />
-    <Content Remove="Pages\Identity\Roles\CreateModal.cshtml" />
-    <Content Remove="Pages\Identity\Roles\EditModal.cshtml" />
     <Content Remove="Pages\Identity\Roles\Index.cshtml" />
-    <Content Remove="Pages\Identity\Roles\_Layout.cshtml" />
-    <Content Remove="Pages\Identity\Roles\_ViewStart.cshtml" />
-    <Content Remove="Pages\Identity\Users\CreateModal.cshtml" />
-    <Content Remove="Pages\Identity\Users\EditModal.cshtml" />
     <Content Remove="Pages\Identity\Users\Index.cshtml" />
     <Content Remove="Pages\TenantManagement\Tenants\Index.cshtml" />
     <Content Remove="Pages\_ViewImports.cshtml" />
@@ -86,10 +87,6 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\plugins\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="Pages\AbpPermissionManagement\PermissionManagementModal.cshtml" />
   </ItemGroup>
 
 </Project>
