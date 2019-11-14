@@ -85,7 +85,7 @@
                         <h3 class="card-title">
                             @if (await Authorization.IsGrantedAsync(TenantManagementPermissions.Tenants.Create))
                             {
-                                <abp-button button-type="Primary" name="CreateTenant" icon="plus" text="@L["NewTenant"].Value" class="btn-xs" />
+                                <abp-button button-type="Primary" name="CreateTenant" icon="plus" text="@L["NewTenant"].Value" class="btn-sm" />
                             }
                         </h3>
 

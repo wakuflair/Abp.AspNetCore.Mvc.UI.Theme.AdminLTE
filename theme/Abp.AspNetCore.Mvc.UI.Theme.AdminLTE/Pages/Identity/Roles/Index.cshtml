@@ -57,7 +57,7 @@
                         <h3 class="card-title">
                             @if (await Authorization.IsGrantedAsync(IdentityPermissions.Roles.Create))
                             {
-                                <abp-button button-type="Primary" name="CreateRole" text="@L["NewRole"].Value" icon="plus" class="btn-xs" />
+                                <abp-button button-type="Primary" name="CreateRole" text="@L["NewRole"].Value" icon="plus" class="btn-sm" />
                             }
                         </h3>
 
