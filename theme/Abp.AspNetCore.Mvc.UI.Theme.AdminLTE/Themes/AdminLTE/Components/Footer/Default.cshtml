@@ -5,13 +5,14 @@
 @inject IHtmlLocalizer<AdminLTEResource> TL
 
 @{
-    var pageTitle = ViewBag.Title == null ? BrandingProvider.AppName : ViewBag.Title; //TODO: Discard to get from Title
-    var version = ViewBag.Version == null ? "1.0.0" : ViewBag.Version;
+    string copyrightAuthor = (string) ViewData["CopyrightAuthor"] ?? BrandingProvider.AppName;
+    string copyrightUrl = (string) ViewData["CopyrightUrl"];
+    string version = (string) ViewData["Version"] ?? "1.0";
 }
 
 <footer class="main-footer">
-    <strong>Copyright &copy; 2014-@DateTime.Now.Year <a href="http://adminlte.io">@pageTitle</a>.</strong>
-    @TL["AllRightsReserved"].
+    <strong>Copyright &copy; 2014-@DateTime.Now.Year <a href="@copyrightUrl">@copyrightAuthor</a>.</strong>
+    @TL["AllRightsReserved"]
     <div class="float-right d-none d-sm-inline-block">
         <b>@TL["Version"]</b> @version
     </div>
