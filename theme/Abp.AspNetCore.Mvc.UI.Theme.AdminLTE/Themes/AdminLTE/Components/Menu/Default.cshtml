@@ -1,9 +1,14 @@
 ﻿@using Volo.Abp.Users
 @using Volo.Abp.UI.Navigation
 @using Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared.Components
+@using Volo.Abp.Identity
 @inject ICurrentUser CurrentUser
 @inject IBrandingProvider BrandingProvider
+@inject IdentityUserManager UserManager
 @model ApplicationMenu
+@{
+    string name = (await UserManager.GetByIdAsync(CurrentUser.GetId())).Name;
+}
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="~/" class="brand-link">
@@ -20,10 +25,10 @@
         <!-- Sidebar user (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
-                <img src="~/themes/adminlte/img/user2-160x160.jpg" class="img-circle elevation-2" alt="@CurrentUser.UserName">
+                <img src="~/themes/adminlte/img/user2-160x160.jpg" class="img-circle elevation-2" alt="@name">
             </div>
             <div class="info">
-                <a href="~/Account/Manage" class="d-block">@CurrentUser.UserName</a>
+                <a href="~/Account/Manage" class="d-block">@name</a>
             </div>
         </div>
 
