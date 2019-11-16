@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using Abp.AspNetCore.Mvc.UI.Theme.AdminLTE.Themes.AdminLTE.Components.Menu;
+using Abp.AspNetCore.Mvc.UI.Theme.AdminLTE.Themes.AdminLTE.Components.Toolbar.LanguageSwitch;
 using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared.Toolbars;
 using Volo.Abp.Localization;
@@ -25,10 +26,10 @@ namespace Abp.AspNetCore.Mvc.UI.Theme.AdminLTE.Toolbars
 
             //TODO: This duplicates GetLanguages() usage. Can we eleminate this?
             var languages = await languageProvider.GetLanguagesAsync();
-            //if (languages.Count > 1)
-            //{
-            //    context.Toolbar.Items.Add(new ToolbarItem(typeof(LanguageSwitchViewComponent)));
-            //}
+            if (languages.Count > 1)
+            {
+                context.Toolbar.Items.Add(new ToolbarItem(typeof(LanguageSwitchViewComponent)));
+            }
 
             if (context.ServiceProvider.GetRequiredService<ICurrentUser>().IsAuthenticated)
             {

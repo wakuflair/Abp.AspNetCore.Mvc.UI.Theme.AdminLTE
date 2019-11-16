@@ -4,8 +4,10 @@
 @using Microsoft.AspNetCore.Mvc.Localization
 @using Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared.Components
 @using Abp.AspNetCore.Mvc.UI.Theme.AdminLTE.Themes.AdminLTE.Components.Toolbar
+@using Volo.Abp.Localization
 @inject IHtmlLocalizer<AdminLTEResource> L
 @inject IBrandingProvider BrandingProvider
+@inject ILanguageProvider LanguageProvider
 <nav class="main-header navbar navbar-expand navbar-white navbar-light">
     <!-- Left navbar links -->
     <ul class="navbar-nav">
@@ -130,7 +132,10 @@
                     </div>
                 </li>
         *@
-        @(await Component.InvokeAsync<LanguageSwitchViewComponent>())
+        @if ((await LanguageProvider.GetLanguagesAsync()).Count > 1)
+        {
+            @(await Component.InvokeAsync<LanguageSwitchViewComponent>())
+        }
         <li class="nav-item d-none d-sm-inline-block">
             <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#">
                 <i class="fas fa-th-large"></i>
