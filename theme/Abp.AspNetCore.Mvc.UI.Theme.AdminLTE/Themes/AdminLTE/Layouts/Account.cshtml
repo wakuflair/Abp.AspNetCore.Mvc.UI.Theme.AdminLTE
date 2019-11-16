@@ -2,6 +2,7 @@
 @using Abp.AspNetCore.Mvc.UI.Theme.AdminLTE.Themes.AdminLTE.Components.PageAlerts
 @using Microsoft.Extensions.Localization
 @using Microsoft.Extensions.Options
+@using Volo.Abp.AspNetCore.MultiTenancy
 @using Volo.Abp.AspNetCore.Mvc.AntiForgery
 @using Volo.Abp.AspNetCore.Mvc.UI.Components.LayoutHook
 @using Volo.Abp.AspNetCore.Mvc.UI.MultiTenancy.Localization
@@ -54,19 +55,23 @@
         </div>
         @(await Component.InvokeAsync<PageAlertsViewComponent>())
 
-        <a id="AbpTenantSwitchLink" href="javascript:;" class="btn btn-block btn-social bg-gradient-success" style="margin-bottom:10px;">
-            <i class="fa fa-group" style="font-size: 1.2em;"></i> @MultiTenancyStringLocalizer["Tenant"]
-            @if (CurrentTenant.Id == null)
-            {
-                <span>
-                    @MultiTenancyStringLocalizer["NotSelected"]
-                </span>
-            }
-            else
-            {
-                <strong>@(CurrentTenant.Name ?? CurrentTenant.Id.Value.ToString())</strong>
-            }
-        </a>
+        @if (MultiTenancyOptions.Value.IsEnabled &&
+             (TenantResolveResultAccessor.Result?.AppliedResolvers?.Contains(CookieTenantResolveContributor.ContributorName) == true))
+        {
+            <a id="AbpTenantSwitchLink" href="javascript:;" class="btn btn-block btn-social bg-gradient-success" style="margin-bottom: 10px;">
+                <i class="fa fa-group" style="font-size: 1.2em;"></i> @MultiTenancyStringLocalizer["Tenant"]
+                @if (CurrentTenant.Id == null)
+                {
+                    <span>
+                        @MultiTenancyStringLocalizer["NotSelected"]
+                    </span>
+                }
+                else
+                {
+                    <strong>@(CurrentTenant.Name ?? CurrentTenant.Id.Value.ToString())</strong>
+                }
+            </a>
+        }
 
         <!-- /.login-logo -->
         <div class="card">
