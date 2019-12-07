@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.0</TargetFramework>
@@ -78,11 +78,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Volo.Abp.Account.Web.IdentityServer" Version="1.0.2" />
-    <PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.MultiTenancy" Version="1.0.2" />
-    <PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared" Version="1.0.2" />
-    <PackageReference Include="Volo.Abp.Identity.Web" Version="1.0.2" />
-    <PackageReference Include="Volo.Abp.TenantManagement.Web" Version="1.0.2" />
+    <PackageReference Include="Volo.Abp.Account.Web.IdentityServer" Version="1.1.0" />
+    <PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.MultiTenancy" Version="1.1.0" />
+    <PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared" Version="1.1.0" />
+    <PackageReference Include="Volo.Abp.Identity.Web" Version="1.1.0" />
+    <PackageReference Include="Volo.Abp.TenantManagement.Web" Version="1.1.0" />
   </ItemGroup>
 
   <ItemGroup>

@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Volo.Abp.Http.Client.IdentityModel" Version="1.0.2" />
+    <PackageReference Include="Volo.Abp.Http.Client.IdentityModel" Version="1.1.0" />
     <ProjectReference Include="..\..\src\AdminLTEPro.HttpApi.Client\AdminLTEPro.HttpApi.Client.csproj" />
   </ItemGroup>
 
