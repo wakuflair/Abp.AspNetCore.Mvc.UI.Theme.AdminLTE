@@ -14,7 +14,7 @@ Although this module is in development stage, it works. You can see the sample p
 
         `Install-Package Abp.AspNetCore.Mvc.UI.Theme.AdminLTE`
 
-1. Add `DependsOn` attributes
+1. Add `DependsOn` attribute
 
     * Web project:
 
