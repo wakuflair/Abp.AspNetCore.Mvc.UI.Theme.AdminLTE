@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.0</TargetFramework>
@@ -6,6 +6,14 @@
     <OutputType>Library</OutputType>
     <StartupObject />
     <AssemblyName>Abp.AspNetCore.Mvc.UI.Theme.AdminLTE</AssemblyName>
+    <Version>0.5</Version>
+    <Authors>wakuflair</Authors>
+    <Description>An ABP theme module based on AdminLTE</Description>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageProjectUrl>https://github.com/wakuflair/Abp.AspNetCore.Mvc.UI.Theme.AdminLTE</PackageProjectUrl>
+    <PackageTags>abp module theme</PackageTags>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <IsPackable>true</IsPackable>
   </PropertyGroup>
 
   <ItemGroup>
@@ -20,6 +28,18 @@
     <Content Remove="Pages\AbpPermissionManagement\**" />
     <EmbeddedResource Remove="Pages\AbpPermissionManagement\**" />
     <None Remove="Pages\AbpPermissionManagement\**" />
+    <None Include="..\..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+    <None Include="..\..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+    <None Include="LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
   <ItemGroup>
