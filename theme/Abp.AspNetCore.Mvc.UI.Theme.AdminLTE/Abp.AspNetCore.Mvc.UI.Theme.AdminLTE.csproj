@@ -6,7 +6,7 @@
     <OutputType>Library</OutputType>
     <StartupObject />
     <AssemblyName>Abp.AspNetCore.Mvc.UI.Theme.AdminLTE</AssemblyName>
-    <Version>0.5</Version>
+    <Version>0.5.1</Version>
     <Authors>wakuflair</Authors>
     <Description>An ABP theme module based on AdminLTE</Description>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
