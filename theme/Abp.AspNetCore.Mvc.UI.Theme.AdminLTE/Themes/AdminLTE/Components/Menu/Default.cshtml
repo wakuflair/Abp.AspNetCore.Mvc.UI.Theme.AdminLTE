@@ -7,7 +7,7 @@
 @inject IdentityUserManager UserManager
 @model ApplicationMenu
 @{
-    string name = (await UserManager.GetByIdAsync(CurrentUser.GetId())).Name;
+    string name = CurrentUser.UserName;
 }
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
