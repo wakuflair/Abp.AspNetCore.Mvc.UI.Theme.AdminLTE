@@ -14,6 +14,7 @@
     <PackageTags>abp module theme</PackageTags>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <IsPackable>true</IsPackable>
+    <PackageVersion>0.5.2</PackageVersion>
   </PropertyGroup>
 
   <ItemGroup>
