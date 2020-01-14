@@ -14,7 +14,7 @@
     <PackageTags>abp module theme</PackageTags>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <IsPackable>true</IsPackable>
-    <PackageVersion>0.5.2</PackageVersion>
+    <PackageVersion>0.6</PackageVersion>
   </PropertyGroup>
 
   <ItemGroup>
@@ -99,11 +99,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Volo.Abp.Account.Web.IdentityServer" Version="1.1.2" />
-    <PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.MultiTenancy" Version="1.1.2" />
-    <PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared" Version="1.1.2" />
-    <PackageReference Include="Volo.Abp.Identity.Web" Version="1.1.2" />
-    <PackageReference Include="Volo.Abp.TenantManagement.Web" Version="1.1.2" />
+    <PackageReference Include="Volo.Abp.Account.Web.IdentityServer" Version="2.0.0" />
+    <PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.MultiTenancy" Version="2.0.0" />
+    <PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared" Version="2.0.0" />
+    <PackageReference Include="Volo.Abp.Identity.Web" Version="2.0.0" />
+    <PackageReference Include="Volo.Abp.TenantManagement.Web" Version="2.0.0" />
   </ItemGroup>
 
   <ItemGroup>
