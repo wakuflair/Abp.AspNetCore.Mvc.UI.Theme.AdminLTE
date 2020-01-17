@@ -17,7 +17,7 @@
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.3.0" />
     <ProjectReference Include="..\AdminLTEPro.Application.Tests\AdminLTEPro.Application.Tests.csproj" />
     <ProjectReference Include="..\..\src\AdminLTEPro.Web\AdminLTEPro.Web.csproj" />
-    <PackageReference Include="Volo.Abp.AspNetCore.TestBase" Version="1.1.2" />
+    <PackageReference Include="Volo.Abp.AspNetCore.TestBase" Version="2.0.0" />
   </ItemGroup>
 
   <ItemGroup>

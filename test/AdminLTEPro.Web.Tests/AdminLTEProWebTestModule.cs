@@ -13,9 +13,9 @@ using AdminLTEPro.Web.Menus;
 using Volo.Abp;
 using Volo.Abp.AspNetCore.TestBase;
 using Volo.Abp.Localization;
-using Volo.Abp.Localization.Resources.AbpValidation;
 using Volo.Abp.Modularity;
 using Volo.Abp.UI.Navigation;
+using Volo.Abp.Validation.Localization;
 
 namespace AdminLTEPro
 {
