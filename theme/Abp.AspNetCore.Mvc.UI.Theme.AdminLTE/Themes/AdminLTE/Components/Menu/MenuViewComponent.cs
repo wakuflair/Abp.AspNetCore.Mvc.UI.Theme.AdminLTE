@@ -29,7 +29,7 @@ namespace Abp.AspNetCore.Mvc.UI.Theme.AdminLTE.Themes.AdminLTE.Components.Menu
 
             withItems.ForEach(m =>
             {
-                if (m.Url != null && pageUrl == $"{m.Url}/index".ToUpper())
+                if (m.Url != null && (m.Url.ToUpper() == pageUrl || pageUrl == $"{m.Url}/index".ToUpper()))
                 {
                     m.CssClass = "active";
                     // 存在父级
