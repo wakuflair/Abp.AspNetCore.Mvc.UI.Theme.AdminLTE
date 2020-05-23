@@ -14,7 +14,7 @@ namespace AdminLTEPro.EntityFrameworkCore
             var configuration = BuildConfiguration();
 
             var builder = new DbContextOptionsBuilder<AdminLTEProMigrationsDbContext>()
-                .UseMySql(configuration.GetConnectionString("Default"));
+                .UseSqlServer(configuration.GetConnectionString("Default"));
 
             return new AdminLTEProMigrationsDbContext(builder.Options);
         }
