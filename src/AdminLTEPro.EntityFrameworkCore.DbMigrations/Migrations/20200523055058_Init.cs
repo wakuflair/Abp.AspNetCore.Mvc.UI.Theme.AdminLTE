@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace AdminLTEPro.Migrations
 {
-    public partial class AdminLTEPro_v100 : Migration
+    public partial class Init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -184,8 +184,8 @@ namespace AdminLTEPro.Migrations
                     NormalizedUserName = table.Column<string>(maxLength: 256, nullable: false),
                     Name = table.Column<string>(maxLength: 64, nullable: true),
                     Surname = table.Column<string>(maxLength: 64, nullable: true),
-                    Email = table.Column<string>(maxLength: 256, nullable: true),
-                    NormalizedEmail = table.Column<string>(maxLength: 256, nullable: true),
+                    Email = table.Column<string>(maxLength: 256, nullable: false),
+                    NormalizedEmail = table.Column<string>(maxLength: 256, nullable: false),
                     EmailConfirmed = table.Column<bool>(nullable: false, defaultValue: false),
                     PasswordHash = table.Column<string>(maxLength: 256, nullable: true),
                     SecurityStamp = table.Column<string>(maxLength: 256, nullable: false),
@@ -281,6 +281,27 @@ namespace AdminLTEPro.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_IdentityServerClients", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "IdentityServerDeviceFlowCodes",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(nullable: false),
+                    ExtraProperties = table.Column<string>(nullable: true),
+                    ConcurrencyStamp = table.Column<string>(nullable: true),
+                    CreationTime = table.Column<DateTime>(nullable: false),
+                    CreatorId = table.Column<Guid>(nullable: true),
+                    DeviceCode = table.Column<string>(maxLength: 200, nullable: false),
+                    UserCode = table.Column<string>(maxLength: 200, nullable: false),
+                    SubjectId = table.Column<string>(maxLength: 200, nullable: true),
+                    ClientId = table.Column<string>(maxLength: 200, nullable: false),
+                    Expiration = table.Column<DateTime>(nullable: false),
+                    Data = table.Column<string>(maxLength: 50000, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_IdentityServerDeviceFlowCodes", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -520,7 +541,7 @@ namespace AdminLTEPro.Migrations
                 {
                     table.PrimaryKey("PK_IdentityServerApiClaims", x => new { x.ApiResourceId, x.Type });
                     table.ForeignKey(
-                        name: "FK_IdentityServerApiClaims_IdentityServerApiResources_ApiResour~",
+                        name: "FK_IdentityServerApiClaims_IdentityServerApiResources_ApiResourceId",
                         column: x => x.ApiResourceId,
                         principalTable: "IdentityServerApiResources",
                         principalColumn: "Id",
@@ -543,7 +564,7 @@ namespace AdminLTEPro.Migrations
                 {
                     table.PrimaryKey("PK_IdentityServerApiScopes", x => new { x.ApiResourceId, x.Name });
                     table.ForeignKey(
-                        name: "FK_IdentityServerApiScopes_IdentityServerApiResources_ApiResour~",
+                        name: "FK_IdentityServerApiScopes_IdentityServerApiResources_ApiResourceId",
                         column: x => x.ApiResourceId,
                         principalTable: "IdentityServerApiResources",
                         principalColumn: "Id",
@@ -564,7 +585,7 @@ namespace AdminLTEPro.Migrations
                 {
                     table.PrimaryKey("PK_IdentityServerApiSecrets", x => new { x.ApiResourceId, x.Type, x.Value });
                     table.ForeignKey(
-                        name: "FK_IdentityServerApiSecrets_IdentityServerApiResources_ApiResou~",
+                        name: "FK_IdentityServerApiSecrets_IdentityServerApiResources_ApiResourceId",
                         column: x => x.ApiResourceId,
                         principalTable: "IdentityServerApiResources",
                         principalColumn: "Id",
@@ -601,7 +622,7 @@ namespace AdminLTEPro.Migrations
                 {
                     table.PrimaryKey("PK_IdentityServerClientCorsOrigins", x => new { x.ClientId, x.Origin });
                     table.ForeignKey(
-                        name: "FK_IdentityServerClientCorsOrigins_IdentityServerClients_Client~",
+                        name: "FK_IdentityServerClientCorsOrigins_IdentityServerClients_ClientId",
                         column: x => x.ClientId,
                         principalTable: "IdentityServerClients",
                         principalColumn: "Id",
@@ -637,7 +658,7 @@ namespace AdminLTEPro.Migrations
                 {
                     table.PrimaryKey("PK_IdentityServerClientIdPRestrictions", x => new { x.ClientId, x.Provider });
                     table.ForeignKey(
-                        name: "FK_IdentityServerClientIdPRestrictions_IdentityServerClients_Cl~",
+                        name: "FK_IdentityServerClientIdPRestrictions_IdentityServerClients_ClientId",
                         column: x => x.ClientId,
                         principalTable: "IdentityServerClients",
                         principalColumn: "Id",
@@ -655,7 +676,7 @@ namespace AdminLTEPro.Migrations
                 {
                     table.PrimaryKey("PK_IdentityServerClientPostLogoutRedirectUris", x => new { x.ClientId, x.PostLogoutRedirectUri });
                     table.ForeignKey(
-                        name: "FK_IdentityServerClientPostLogoutRedirectUris_IdentityServerCli~",
+                        name: "FK_IdentityServerClientPostLogoutRedirectUris_IdentityServerClients_ClientId",
                         column: x => x.ClientId,
                         principalTable: "IdentityServerClients",
                         principalColumn: "Id",
@@ -692,7 +713,7 @@ namespace AdminLTEPro.Migrations
                 {
                     table.PrimaryKey("PK_IdentityServerClientRedirectUris", x => new { x.ClientId, x.RedirectUri });
                     table.ForeignKey(
-                        name: "FK_IdentityServerClientRedirectUris_IdentityServerClients_Clien~",
+                        name: "FK_IdentityServerClientRedirectUris_IdentityServerClients_ClientId",
                         column: x => x.ClientId,
                         principalTable: "IdentityServerClients",
                         principalColumn: "Id",
@@ -749,7 +770,7 @@ namespace AdminLTEPro.Migrations
                 {
                     table.PrimaryKey("PK_IdentityServerIdentityClaims", x => new { x.IdentityResourceId, x.Type });
                     table.ForeignKey(
-                        name: "FK_IdentityServerIdentityClaims_IdentityServerIdentityResources~",
+                        name: "FK_IdentityServerIdentityClaims_IdentityServerIdentityResources_IdentityResourceId",
                         column: x => x.IdentityResourceId,
                         principalTable: "IdentityServerIdentityResources",
                         principalColumn: "Id",
@@ -791,7 +812,7 @@ namespace AdminLTEPro.Migrations
                 {
                     table.PrimaryKey("PK_IdentityServerApiScopeClaims", x => new { x.ApiResourceId, x.Name, x.Type });
                     table.ForeignKey(
-                        name: "FK_IdentityServerApiScopeClaims_IdentityServerApiScopes_ApiReso~",
+                        name: "FK_IdentityServerApiScopeClaims_IdentityServerApiScopes_ApiResourceId_Name",
                         columns: x => new { x.ApiResourceId, x.Name },
                         principalTable: "IdentityServerApiScopes",
                         principalColumns: new[] { "ApiResourceId", "Name" },
@@ -804,7 +825,7 @@ namespace AdminLTEPro.Migrations
                 column: "AuditLogId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_AbpAuditLogActions_TenantId_ServiceName_MethodName_Execution~",
+                name: "IX_AbpAuditLogActions_TenantId_ServiceName_MethodName_ExecutionTime",
                 table: "AbpAuditLogActions",
                 columns: new[] { "TenantId", "ServiceName", "MethodName", "ExecutionTime" });
 
@@ -909,6 +930,23 @@ namespace AdminLTEPro.Migrations
                 column: "ClientId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_IdentityServerDeviceFlowCodes_DeviceCode",
+                table: "IdentityServerDeviceFlowCodes",
+                column: "DeviceCode",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_IdentityServerDeviceFlowCodes_Expiration",
+                table: "IdentityServerDeviceFlowCodes",
+                column: "Expiration");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_IdentityServerDeviceFlowCodes_UserCode",
+                table: "IdentityServerDeviceFlowCodes",
+                column: "UserCode",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
                 name: "IX_IdentityServerPersistedGrants_Expiration",
                 table: "IdentityServerPersistedGrants",
                 column: "Expiration");
@@ -995,6 +1033,9 @@ namespace AdminLTEPro.Migrations
 
             migrationBuilder.DropTable(
                 name: "IdentityServerClientSecrets");
+
+            migrationBuilder.DropTable(
+                name: "IdentityServerDeviceFlowCodes");
 
             migrationBuilder.DropTable(
                 name: "IdentityServerIdentityClaims");
