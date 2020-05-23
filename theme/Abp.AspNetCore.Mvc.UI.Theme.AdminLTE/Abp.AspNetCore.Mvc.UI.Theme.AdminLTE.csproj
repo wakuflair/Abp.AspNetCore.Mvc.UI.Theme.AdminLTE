@@ -99,11 +99,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Volo.Abp.Account.Web.IdentityServer" Version="2.0.1" />
-    <PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.MultiTenancy" Version="2.0.1" />
-    <PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared" Version="2.0.1" />
-    <PackageReference Include="Volo.Abp.Identity.Web" Version="2.0.1" />
-    <PackageReference Include="Volo.Abp.TenantManagement.Web" Version="2.0.1" />
+    <PackageReference Include="Volo.Abp.Account.Web.IdentityServer" Version="2.8.0" />
+    <PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.MultiTenancy" Version="2.8.0" />
+    <PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared" Version="2.8.0" />
+    <PackageReference Include="Volo.Abp.Identity.Web" Version="2.8.0" />
+    <PackageReference Include="Volo.Abp.TenantManagement.Web" Version="2.8.0" />
   </ItemGroup>
 
   <ItemGroup>
