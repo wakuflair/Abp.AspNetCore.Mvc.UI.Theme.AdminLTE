@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Volo.Abp.AspNetCore.Mvc;
 using Volo.Abp.UI.Navigation;
@@ -19,7 +20,7 @@ namespace Abp.AspNetCore.Mvc.UI.Theme.AdminLTE.Themes.AdminLTE.Components.Menu
             //获取当前页地址
             var pageUrl = RouteData.Values["page"];
             var menu = await _menuManager.GetAsync(StandardMenus.Main);
-            SetMenuItemActivateCssClass(pageUrl.ToString().ToUpper(), parentMenu: menu);
+            SetMenuItemActivateCssClass(pageUrl.ToString(), parentMenu: menu);
             return View("~/Themes/AdminLTE/Components/Menu/Default.cshtml", menu);
         }
 
@@ -29,7 +30,7 @@ namespace Abp.AspNetCore.Mvc.UI.Theme.AdminLTE.Themes.AdminLTE.Components.Menu
 
             withItems.ForEach(m =>
             {
-                if (m.Url != null && pageUrl == $"{m.Url}/index".ToUpper())
+                if (m.Url != null && string.Compare(pageUrl, $"{m.Url}/index", StringComparison.InvariantCultureIgnoreCase) == 0)
                 {
                     m.CssClass = "active";
                     // 存在父级
