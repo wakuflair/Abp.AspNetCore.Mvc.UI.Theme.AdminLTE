@@ -6,7 +6,7 @@
     <OutputType>Library</OutputType>
     <StartupObject />
     <AssemblyName>Abp.AspNetCore.Mvc.UI.Theme.AdminLTE</AssemblyName>
-    <Version>0.6.2</Version>
+    <Version>0.6.3</Version>
     <Authors>wakuflair</Authors>
     <Description>An ABP theme module based on AdminLTE</Description>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
@@ -14,7 +14,7 @@
     <PackageTags>abp module theme</PackageTags>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <IsPackable>true</IsPackable>
-    <PackageVersion>0.6.2</PackageVersion>
+    <PackageVersion>0.6.3</PackageVersion>
   </PropertyGroup>
 
   <ItemGroup>
