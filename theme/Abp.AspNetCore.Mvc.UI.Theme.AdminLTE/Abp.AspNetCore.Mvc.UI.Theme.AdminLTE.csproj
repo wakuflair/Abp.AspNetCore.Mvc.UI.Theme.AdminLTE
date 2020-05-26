@@ -9,93 +9,32 @@
     <Version>0.6.3</Version>
     <Authors>wakuflair</Authors>
     <Description>An ABP theme module based on AdminLTE</Description>
-    <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageProjectUrl>https://github.com/wakuflair/Abp.AspNetCore.Mvc.UI.Theme.AdminLTE</PackageProjectUrl>
     <PackageTags>abp module theme</PackageTags>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <IsPackable>true</IsPackable>
-    <PackageVersion>0.6.3</PackageVersion>
+    <PackageVersion>0.6.4</PackageVersion>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="Themes\**\*.cshtml" />
-    <EmbeddedResource Include="Pages\**\*.cshtml" />
-    <EmbeddedResource Include="Views\**\*.cshtml" />
-    <EmbeddedResource Include="wwwroot\**\*.*" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Remove="Pages\AbpPermissionManagement\**" />
-    <Content Remove="Pages\AbpPermissionManagement\**" />
-    <EmbeddedResource Remove="Pages\AbpPermissionManagement\**" />
-    <None Remove="Pages\AbpPermissionManagement\**" />
     <None Include="..\..\LICENSE">
       <Pack>True</Pack>
-      <PackagePath></PackagePath>
-    </None>
-    <None Include="..\..\LICENSE">
-      <Pack>True</Pack>
-      <PackagePath></PackagePath>
-    </None>
-    <None Include="LICENSE">
-      <Pack>True</Pack>
-      <PackagePath></PackagePath>
     </None>
   </ItemGroup>
 
   <ItemGroup>
-    <Content Remove="Localization\AdminLTE\cs.json" />
-    <Content Remove="Localization\AdminLTE\en.json" />
-    <Content Remove="Localization\AdminLTE\pl.json" />
-    <Content Remove="Localization\AdminLTE\pt-BR.json" />
-    <Content Remove="Localization\AdminLTE\tr.json" />
-    <Content Remove="Localization\AdminLTE\vi.json" />
-    <Content Remove="Localization\AdminLTE\zh-Hans.json" />
-    <Content Remove="Pages\Account\Login.cshtml" />
-    <Content Remove="Pages\Account\Manage.cshtml" />
-    <Content Remove="Pages\Account\Register.cshtml" />
-    <Content Remove="Pages\Account\_Layout.cshtml" />
-    <Content Remove="Pages\Account\_ViewStart.cshtml" />
-    <Content Remove="Pages\Identity\Roles\Index.cshtml" />
-    <Content Remove="Pages\Identity\Users\Index.cshtml" />
-    <Content Remove="Pages\TenantManagement\Tenants\Index.cshtml" />
-    <Content Remove="Pages\_ViewImports.cshtml" />
-    <Content Remove="Themes\AdminLTE\Components\ControlSidebar\Default.cshtml" />
-    <Content Remove="Themes\AdminLTE\Components\Footer\Default.cshtml" />
-    <Content Remove="Themes\AdminLTE\Components\Header\Default.cshtml" />
-    <Content Remove="Themes\AdminLTE\Components\Menu\Default.cshtml" />
-    <Content Remove="Themes\AdminLTE\Components\Menu\_MenuItem.cshtml" />
-    <Content Remove="Themes\AdminLTE\Components\PageAlerts\Default.cshtml" />
-    <Content Remove="Themes\AdminLTE\Components\Toolbar\LanguageSwitch\Default.cshtml" />
-    <Content Remove="Themes\AdminLTE\Components\Toolbar\UserMenu\Default.cshtml" />
-    <Content Remove="Themes\AdminLTE\Layouts\Account.cshtml" />
-    <Content Remove="Themes\AdminLTE\Layouts\Application.cshtml" />
-    <Content Remove="Themes\AdminLTE\Layouts\Empty.cshtml" />
-    <Content Remove="Themes\AdminLTE\_ViewImports.cshtml" />
-    <Content Remove="Views\_ViewImports.cshtml" />
+    <EmbeddedResource Include="Localization\**\*.json" />
+    <Content Remove="Localization\**\*.json" />
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Remove="Pages\Account\_Layout.cshtml" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Remove="Pages\Identity\Roles\index.js" />
-    <None Remove="Pages\Identity\Users\index.js" />
-    <None Remove="Pages\TenantManagement\Tenants\index.js" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Include="Localization\AdminLTE\cs.json" />
-    <EmbeddedResource Include="Localization\AdminLTE\en.json" />
-    <EmbeddedResource Include="Localization\AdminLTE\pl.json" />
-    <EmbeddedResource Include="Localization\AdminLTE\pt-BR.json" />
-    <EmbeddedResource Include="Localization\AdminLTE\tr.json" />
-    <EmbeddedResource Include="Localization\AdminLTE\vi.json" />
-    <EmbeddedResource Include="Localization\AdminLTE\zh-Hans.json" />
-    <EmbeddedResource Include="Pages\Identity\Roles\index.js" />
-    <EmbeddedResource Include="Pages\Identity\Users\index.js" />
-    <EmbeddedResource Include="Pages\TenantManagement\Tenants\index.js" />
+    <None Update="wwwroot\**\*">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="wwwroot\**\*">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
   <ItemGroup>
@@ -104,10 +43,6 @@
     <PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared" Version="2.8.0" />
     <PackageReference Include="Volo.Abp.Identity.Web" Version="2.8.0" />
     <PackageReference Include="Volo.Abp.TenantManagement.Web" Version="2.8.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="wwwroot\plugins\" />
   </ItemGroup>
 
 </Project>
