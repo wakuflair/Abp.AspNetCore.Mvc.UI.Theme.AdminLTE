@@ -26,15 +26,8 @@
   <ItemGroup>
     <EmbeddedResource Include="Localization\**\*.json" />
     <Content Remove="Localization\**\*.json" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Update="wwwroot\**\*">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="wwwroot\**\*">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    <EmbeddedResource Include="wwwroot\**\*" />
+    <Content Remove="wwwroot\**\*" />
   </ItemGroup>
 
   <ItemGroup>
