@@ -14,13 +14,18 @@ Although this module is in development stage, it works. You can see the sample p
 
         `Install-Package Abp.AspNetCore.Mvc.UI.Theme.AdminLTE`
 
-1. Add `DependsOn` attribute
+1. Replace theme module depends
 
     * Web project:
 
         ``` csharp
         ...
-        [DependsOn(typeof(AbpAspNetCoreMvcUiAdminLTEThemeModule))]
+        [DependsOn(
+            ...
+            // typeof(AbpAspNetCoreMvcUiBasicThemeModule),
+            typeof(AbpAspNetCoreMvcUiAdminLTEThemeModule),
+            ...
+        ]
         public class YourWebModule : AbpModule
         {
             ...
