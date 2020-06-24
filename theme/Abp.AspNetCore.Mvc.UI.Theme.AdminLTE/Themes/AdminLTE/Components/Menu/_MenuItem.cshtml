@@ -4,8 +4,9 @@
 {
     if (Model.Url != null)
     {
+        var linkUrl = string.IsNullOrEmpty(Model.Url) ? "#" : Url.Content(Model.Url);
         <li class="nav-item">
-            <a href="@(Model.Url ?? "#")" class="nav-link @Model.CssClass">
+            <a href="@linkUrl" class="nav-link @Model.CssClass">
                 <i class="far @Model.Icon nav-icon"></i>
                 <p>@Model.DisplayName</p>
             </a>
