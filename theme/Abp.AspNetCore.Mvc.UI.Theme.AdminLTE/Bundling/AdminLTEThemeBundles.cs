@@ -11,5 +11,10 @@
         {
             public const string Global = "AdminLTE.Global";
         }
+
+        public static class HeaderScripts
+        {
+            public const string Global = "AdminLTE.Global.Header";
+        }
     }
 }

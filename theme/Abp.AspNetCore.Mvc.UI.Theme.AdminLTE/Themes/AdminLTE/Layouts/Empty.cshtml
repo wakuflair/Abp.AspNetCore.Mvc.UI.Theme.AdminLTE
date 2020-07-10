@@ -47,6 +47,8 @@
     @await RenderSectionAsync("styles", false)
 
     @await Component.InvokeLayoutHookAsync(LayoutHooks.Head.Last, StandardLayouts.Empty)
+
+    <abp-script-bundle name="@AdminLTEThemeBundles.HeaderScripts.Global" />
 </head>
 <body class="abp-empty-layout">
     @await Component.InvokeLayoutHookAsync(LayoutHooks.Body.First, StandardLayouts.Empty)

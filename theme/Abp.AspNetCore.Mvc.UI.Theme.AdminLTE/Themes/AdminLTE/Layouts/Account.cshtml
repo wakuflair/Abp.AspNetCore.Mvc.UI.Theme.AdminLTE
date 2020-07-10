@@ -43,6 +43,9 @@
     @await Component.InvokeLayoutHookAsync(LayoutHooks.Head.Last, StandardLayouts.Account)
     <!-- CDN Google Font: Source Sans Pro -->
     <!-- <link href="https://fonts.cat.net/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet"> -->
+
+    <abp-script-bundle name="@AdminLTEThemeBundles.HeaderScripts.Global" />
+
 </head>
 <body class="hold-transition login-page">
     @await Component.InvokeLayoutHookAsync(LayoutHooks.Body.First, StandardLayouts.Account)
