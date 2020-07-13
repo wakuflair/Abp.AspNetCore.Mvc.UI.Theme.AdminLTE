@@ -1,6 +1,8 @@
 ﻿@page
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Volo.Abp.Account.Localization
 @model Abp.AspNetCore.Mvc.UI.Theme.AdminLTE.Pages.Account.RegisterModel
-@inherits Volo.Abp.Account.Web.Pages.Account.AccountPage
+@inject IHtmlLocalizer<AccountResource> L
 
 <p class="login-box-msg">@L["Register"]</p>
 

@@ -1,7 +1,9 @@
 ﻿@page
 @model Abp.AspNetCore.Mvc.UI.Theme.AdminLTE.Pages.Account.LoginModel
 @using Volo.Abp.Account.Settings
-@inherits Volo.Abp.Account.Web.Pages.Account.AccountPage
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Volo.Abp.Account.Localization
+@inject IHtmlLocalizer<AccountResource> L
 @inject Volo.Abp.Settings.ISettingProvider SettingProvider
 @section styles {
     <!-- icheck bootstrap -->
