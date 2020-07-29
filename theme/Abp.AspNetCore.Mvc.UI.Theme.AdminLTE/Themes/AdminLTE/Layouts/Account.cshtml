@@ -20,11 +20,14 @@
 @{
     Layout = null;
     AbpAntiForgeryManager.SetCookie();
+
+    var title = "Quản lý xây dựng cơ bản<br/>tỉnh Quảng Nam";
+    var copyright = "Địa chỉ: 02 Trần Phú, TP. Tam Kỳ, Quảng Nam - &copy; 2020 Bản quyền thuộc Sở Kế hoạch và Đầu tư Quảng Nam";
 }
 
 <!DOCTYPE html>
 
-<html lang="@CultureInfo.CurrentCulture.Name">
+<html lang="@System.Globalization.CultureInfo.CurrentCulture.Name">
 <head>
     @await Component.InvokeLayoutHookAsync(LayoutHooks.Head.First, StandardLayouts.Account)
 
@@ -47,27 +50,28 @@
     <abp-script-bundle name="@AdminLTEThemeBundles.HeaderScripts.Global" />
 
 </head>
-<body class="hold-transition login-page">
+<body class="login-page">
     @await Component.InvokeLayoutHookAsync(LayoutHooks.Body.First, StandardLayouts.Account)
 
     <div class="login-box">
         <div class="login-logo">
             <a href="javascript:;">
-                @(ViewBag.Title == null ? BrandingProvider.AppName : ViewBag.Title)
+                <div style="margin-bottom: 12px;">
+                    <img class="img" src="/img/logo-xdcb.png" style="width: 100%; max-width: 100px;">
+                </div>
+                <p class="title-project"> @Html.Raw(title)</p>
             </a>
         </div>
         @(await Component.InvokeAsync<PageAlertsViewComponent>())
 
         @if (MultiTenancyOptions.Value.IsEnabled &&
-             (TenantResolveResultAccessor.Result?.AppliedResolvers?.Contains(CookieTenantResolveContributor.ContributorName) == true))
+         (TenantResolveResultAccessor.Result?.AppliedResolvers?.Contains(CookieTenantResolveContributor.ContributorName) == true))
         {
             <a id="AbpTenantSwitchLink" href="javascript:;" class="btn btn-block btn-social bg-gradient-success" style="margin-bottom: 10px;">
                 <i class="fa fa-group" style="font-size: 1.2em;"></i> @MultiTenancyStringLocalizer["Tenant"]
                 @if (CurrentTenant.Id == null)
                 {
-                    <span>
-                        @MultiTenancyStringLocalizer["NotSelected"]
-                    </span>
+                    <span> @MultiTenancyStringLocalizer["NotSelected"]</span>
                 }
                 else
                 {
@@ -78,10 +82,16 @@
 
         <!-- /.login-logo -->
         <div class="card">
+            <div class="card-header">
+                <p class="card-title">
+                    Đăng nhập
+                </p>
+            </div>
             <div class="card-body login-card-body">
                 @RenderBody()
             </div>
         </div>
+        <p class="copyright-text">@Html.Raw(copyright)</p>
         <!-- /.login-box-body -->
     </div>
 
