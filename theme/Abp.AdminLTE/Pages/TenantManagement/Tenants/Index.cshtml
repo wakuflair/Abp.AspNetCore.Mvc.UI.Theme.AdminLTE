@@ -1,0 +1,119 @@
+﻿@page
+@using Abp.AspNetCore.Mvc.UI.Theme.AdminLTE.Localization
+@using Volo.Abp.UI.Navigation.Localization.Resource;
+@using Microsoft.AspNetCore.Authorization
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Volo.Abp.AspNetCore.Mvc.UI.Layout
+@using Volo.Abp.TenantManagement
+@using Volo.Abp.TenantManagement.Localization
+@using Volo.Abp.TenantManagement.Web.Navigation
+@using Volo.Abp.TenantManagement.Web.Pages.TenantManagement.Tenants
+@model Abp.AspNetCore.Mvc.UI.Theme.AdminLTE.Pages.TenantManagement.Tenants.IndexModel
+@inject IHtmlLocalizer<AdminLTEResource> TL
+@inject IHtmlLocalizer<AbpTenantManagementResource> L
+@inject IAuthorizationService Authorization
+@inject IPageLayout PageLayout
+@{
+    PageLayout.Content.Title = L["Tenants"].Value;
+    PageLayout.Content.BreadCrumb.Add(L["Menu:TenantManagement"].Value);
+    PageLayout.Content.MenuItemName = TenantManagementMenuNames.Tenants;
+}
+@section styles {
+    @*<style type="text/css">
+            div.table-responsive > div.dataTables_wrapper > div.row {
+                margin: 0;
+            }
+
+            div.dataTables_wrapper div.dataTables_length select {
+                width: 75px;
+                display: inline-block;
+            }
+
+            div.dataTables_wrapper div.dataTables_length label {
+                font-weight: normal;
+                text-align: left;
+                white-space: nowrap;
+            }
+
+            div.dataTables_wrapper div.dataTables_info {
+                padding-top: 8px;
+                white-space: nowrap;
+            }
+
+            div.dataTables_wrapper div.dataTables_paginate {
+                margin: 0;
+                white-space: nowrap;
+                text-align: right;
+            }
+
+            .pagination {
+                margin: 2px 0;
+                white-space: nowrap;
+            }
+        </style>*@
+}
+@section scripts {
+    <abp-script-bundle name="@typeof(IndexModel).FullName">
+        <abp-script src="/Pages/FeatureManagement/feature-management-modal.js" />
+        <abp-script src="/Pages/TenantManagement/Tenants/ConnectionStringsModal.js" />
+        <abp-script src="/Pages/TenantManagement/Tenants/Index.js" />
+    </abp-script-bundle>
+}
+
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>@L["Tenants"]</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="~/">@TL["Nav:Home"]</a></li>
+                    <li class="breadcrumb-item">@L["Menu:TenantManagement"]</li>
+                    <li class="breadcrumb-item active">@L["Tenants"]</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div id="TenantsWrapper" class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">
+                            @if (await Authorization.IsGrantedAsync(TenantManagementPermissions.Tenants.Create))
+                            {
+                                <abp-button button-type="Primary" name="CreateTenant" icon="plus" text="@L["NewTenant"].Value" class="btn-sm" />
+                            }
+                        </h3>
+
+                        <div class="card-tools">
+                            <div class="input-group input-group-sm" style="width: 150px;">
+                                <input type="text" name="table_search" class="form-control float-right" placeholder="@TL["Input:Search"]">
+
+                                <div class="input-group-append">
+                                    <button id="tableSearch" type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="card-body">
+                        <abp-table striped-rows="true" class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>@L["Actions"]</th>
+                                    <th>@L["TenantName"]</th>
+                                </tr>
+                            </thead>
+                        </abp-table>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>

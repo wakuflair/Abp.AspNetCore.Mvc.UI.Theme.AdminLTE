@@ -1,0 +1,31 @@
+﻿@using Volo.Abp.AspNetCore.Mvc.UI.Alerts
+@model Volo.Abp.AspNetCore.Mvc.UI.Alerts.AlertList
+@if (Model.Any())
+{
+    @foreach (var alertMessage in Model)
+    {
+        var tipCssClass = "";
+        switch (alertMessage.Type)
+        {
+            case AlertType.Danger:
+                tipCssClass = "alert-danger";
+                break;
+            case AlertType.Info:
+                tipCssClass = "alert-info";
+                break;
+            case AlertType.Warning:
+                tipCssClass = "alert-warning";
+                break;
+        }
+
+        <div class="alert @tipCssClass alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+            @if (alertMessage.Title != null)
+            {
+                <h4>@alertMessage.Title</h4>
+            }
+
+            @alertMessage.Text
+        </div>
+    }
+}

@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.29020.237
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "theme", "theme", "{E2AD7EC8-2043-43D6-8DB5-8F983F5E9442}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Abp.AdminLTE", "theme\Abp.AspNetCore.Mvc.UI.Theme.AdminLTE\Abp.AdminLTE.csproj", "{1E15BFF2-347D-4ED9-A980-DE00FD2673AB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Abp.AdminLTE", "theme\Abp.AdminLTE\Abp.AdminLTE.csproj", "{F8753110-F99D-4FE9-B7E7-040BE652C556}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,16 +13,16 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{1E15BFF2-347D-4ED9-A980-DE00FD2673AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1E15BFF2-347D-4ED9-A980-DE00FD2673AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1E15BFF2-347D-4ED9-A980-DE00FD2673AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1E15BFF2-347D-4ED9-A980-DE00FD2673AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8753110-F99D-4FE9-B7E7-040BE652C556}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8753110-F99D-4FE9-B7E7-040BE652C556}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8753110-F99D-4FE9-B7E7-040BE652C556}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8753110-F99D-4FE9-B7E7-040BE652C556}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{1E15BFF2-347D-4ED9-A980-DE00FD2673AB} = {E2AD7EC8-2043-43D6-8DB5-8F983F5E9442}
+		{F8753110-F99D-4FE9-B7E7-040BE652C556} = {E2AD7EC8-2043-43D6-8DB5-8F983F5E9442}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {28315BFD-90E7-4E14-A2EA-F3D23AF4126F}

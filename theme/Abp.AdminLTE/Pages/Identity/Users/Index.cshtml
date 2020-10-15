@@ -1,0 +1,89 @@
+﻿@page
+@using Abp.AspNetCore.Mvc.UI.Theme.AdminLTE.Localization
+@using Volo.Abp.UI.Navigation.Localization.Resource;
+@using Microsoft.AspNetCore.Authorization
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Volo.Abp.AspNetCore.Mvc.UI.Layout
+@using Volo.Abp.Identity
+@using Volo.Abp.Identity.Localization
+@using Volo.Abp.Identity.Web.Navigation
+@using Volo.Abp.Identity.Web.Pages.Identity.Users
+@model Abp.AspNetCore.Mvc.UI.Theme.AdminLTE.Pages.Identity.Users.IndexModel
+@inject IHtmlLocalizer<AdminLTEResource> TL
+@inject IHtmlLocalizer<IdentityResource> L
+@inject IAuthorizationService Authorization
+@inject IPageLayout PageLayout
+@{
+    PageLayout.Content.Title = L["Users"].Value;
+    PageLayout.Content.BreadCrumb.Add(L["Menu:IdentityManagement"].Value);
+    PageLayout.Content.MenuItemName = IdentityMenuNames.Users;
+}
+@section styles {
+    <abp-style-bundle name="@typeof(IndexModel).FullName">
+        <abp-style src="/Pages/AbpPermissionManagement/permission-management-modal.css" />
+    </abp-style-bundle>
+}
+@section scripts {
+    <abp-script-bundle name="@typeof(IndexModel).FullName">
+        <abp-script src="/Pages/AbpPermissionManagement/permission-management-modal.js" />
+        <abp-script src="/Pages/identity/users/index.js" />
+    </abp-script-bundle>
+}
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>@L["Users"]</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="~/">@TL["Nav:Home"]</a></li>
+                    <li class="breadcrumb-item">@L["Menu:IdentityManagement"]</li>
+                    <li class="breadcrumb-item active">@L["Users"]</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div id="IdentityUsersWrapper" class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">
+                            @if (await Authorization.IsGrantedAsync(IdentityPermissions.Users.Create))
+                            {
+                                <abp-button button-type="Primary" name="CreateUser" text="@L["NewUser"].Value" icon="plus" class="btn-sm" />
+                            }
+                        </h3>
+
+                        <div class="card-tools">
+                            <div class="input-group input-group-sm" style="width: 150px;">
+                                <input type="text" name="table_search" class="form-control float-right" placeholder="@TL["Input:Search"]">
+
+                                <div class="input-group-append">
+                                    <button id="tableSearch" type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="card-body">
+                        <abp-table striped-rows="true" class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>@L["Actions"]</th>
+                                    <th>@L["UserName"]</th>
+                                    <th>@L["EmailAddress"]</th>
+                                    <th>@L["PhoneNumber"]</th>
+                                </tr>
+                            </thead>
+                        </abp-table>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

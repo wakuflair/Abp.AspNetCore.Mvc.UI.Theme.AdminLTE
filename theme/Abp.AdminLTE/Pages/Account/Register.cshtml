@@ -1,0 +1,50 @@
+﻿@page
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Volo.Abp.Account.Localization
+@model Abp.AspNetCore.Mvc.UI.Theme.AdminLTE.Pages.Account.RegisterModel
+@inject IHtmlLocalizer<AccountResource> L
+
+<p class="login-box-msg">@L["Register"]</p>
+
+<form method="post">
+    <div class="input-group mb-3">
+        <input asp-for="Input.UserName" class="form-control" placeholder="@L["UserName"]">
+        <div class="input-group-append">
+            <div class="input-group-text">
+                <span class="fas fa-user"></span>
+            </div>
+        </div>
+        <span asp-validation-for="Input.UserName" class="text-danger"></span>
+    </div>
+    <div class="input-group mb-3">
+        <input asp-for="Input.EmailAddress" class="form-control" placeholder="@L["EmailAddress"]">
+        <div class="input-group-append">
+            <div class="input-group-text">
+                <span class="fas fa-envelope"></span>
+            </div>
+        </div>
+        <span asp-validation-for="Input.EmailAddress" class="text-danger"></span>
+    </div>
+    <div class="input-group mb-3">
+        <input asp-for="Input.Password" class="form-control" placeholder="@L["Password"]">
+        <div class="input-group-append">
+            <div class="input-group-text">
+                <span class="fas fa-lock"></span>
+            </div>
+        </div>
+        <span asp-validation-for="Input.Password" class="text-danger"></span>
+    </div>
+    <div class="row">
+        <div class="col-8">
+
+        </div>
+        <!-- /.col -->
+        <div class="col-4">
+            <abp-button button-type="Primary" type="submit" class="btn btn-primary btn-block">@L["Register"]</abp-button>
+        </div>
+        <!-- /.col -->
+    </div>
+</form>
+
+@L["AlreadyRegistered"]
+<a href="@Url.Page("./Login", new {returnUrl = Model.ReturnUrl, returnUrlHash = Model.ReturnUrlHash})" class="text-decoration-none">@L["Login"]</a>

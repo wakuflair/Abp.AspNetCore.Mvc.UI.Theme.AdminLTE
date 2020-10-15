@@ -1,0 +1,109 @@
+﻿@using Abp.AspNetCore.Mvc.UI.Theme.AdminLTE.Bundling
+@using Abp.AspNetCore.Mvc.UI.Theme.AdminLTE.Themes.AdminLTE.Components.PageAlerts
+@using Microsoft.Extensions.Localization
+@using Microsoft.Extensions.Options
+@using Volo.Abp.AspNetCore.MultiTenancy
+@using Volo.Abp.AspNetCore.Mvc.AntiForgery
+@using Volo.Abp.AspNetCore.Mvc.UI.Components.LayoutHook
+@using Volo.Abp.AspNetCore.Mvc.UI.MultiTenancy.Localization
+@using Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared.Components
+@using Volo.Abp.AspNetCore.Mvc.UI.Theming
+@using Volo.Abp.AspNetCore.Mvc.UI.Widgets.Components.WidgetScripts
+@using Volo.Abp.AspNetCore.Mvc.UI.Widgets.Components.WidgetStyles
+@using Volo.Abp.MultiTenancy
+@inject IAbpAntiForgeryManager AbpAntiForgeryManager
+@inject IBrandingProvider BrandingProvider
+@inject IOptions<AbpMultiTenancyOptions> MultiTenancyOptions
+@inject ICurrentTenant CurrentTenant
+@inject IStringLocalizer<AbpUiMultiTenancyResource> MultiTenancyStringLocalizer
+@inject ITenantResolveResultAccessor TenantResolveResultAccessor
+@{
+    Layout = null;
+    AbpAntiForgeryManager.SetCookie();
+
+    var title = "Quản lý xây dựng cơ bản<br/>tỉnh Quảng Nam";
+    var copyright = "Địa chỉ: 02 Trần Phú, TP. Tam Kỳ, Quảng Nam - &copy; 2020 Bản quyền thuộc Sở Kế hoạch và Đầu tư Quảng Nam";
+}
+
+<!DOCTYPE html>
+
+<html lang="@System.Globalization.CultureInfo.CurrentCulture.Name">
+<head>
+    @await Component.InvokeLayoutHookAsync(LayoutHooks.Head.First, StandardLayouts.Account)
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>@(ViewBag.Title == null ? BrandingProvider.AppName : ViewBag.Title)</title>
+
+    <abp-style-bundle name="@AdminLTEThemeBundles.Styles.Global" />
+
+    @await RenderSectionAsync("styles", false)
+
+    @await Component.InvokeAsync(typeof(WidgetStylesViewComponent))
+
+    @await Component.InvokeLayoutHookAsync(LayoutHooks.Head.Last, StandardLayouts.Account)
+    <!-- CDN Google Font: Source Sans Pro -->
+    <!-- <link href="https://fonts.cat.net/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet"> -->
+
+    <abp-script-bundle name="@AdminLTEThemeBundles.HeaderScripts.Global" />
+
+</head>
+<body class="login-page">
+    @await Component.InvokeLayoutHookAsync(LayoutHooks.Body.First, StandardLayouts.Account)
+
+    <div class="login-box">
+        <div class="login-logo">
+            <a href="javascript:;">
+                <div style="margin-bottom: 12px;">
+                    <img class="img" src="/img/logo-xdcb.png" style="width: 100%; max-width: 100px;">
+                </div>
+                <p class="title-project"> @Html.Raw(title)</p>
+            </a>
+        </div>
+        @(await Component.InvokeAsync<PageAlertsViewComponent>())
+
+        @if (MultiTenancyOptions.Value.IsEnabled &&
+         (TenantResolveResultAccessor.Result?.AppliedResolvers?.Contains(CookieTenantResolveContributor.ContributorName) == true))
+        {
+            <a id="AbpTenantSwitchLink" href="javascript:;" class="btn btn-block btn-social bg-gradient-success" style="margin-bottom: 10px;">
+                <i class="fa fa-group" style="font-size: 1.2em;"></i> @MultiTenancyStringLocalizer["Tenant"]
+                @if (CurrentTenant.Id == null)
+                {
+                    <span> @MultiTenancyStringLocalizer["NotSelected"]</span>
+                }
+                else
+                {
+                    <strong>@(CurrentTenant.Name ?? CurrentTenant.Id.Value.ToString())</strong>
+                }
+            </a>
+        }
+
+        <!-- /.login-logo -->
+        <div class="card">
+            <div class="card-header">
+                <p class="card-title">
+                    Đăng nhập
+                </p>
+            </div>
+            <div class="card-body login-card-body">
+                @RenderBody()
+            </div>
+        </div>
+        <p class="copyright-text">@Html.Raw(copyright)</p>
+        <!-- /.login-box-body -->
+    </div>
+
+    <abp-script-bundle name="@AdminLTEThemeBundles.Scripts.Global" />
+
+    <script src="~/Abp/ApplicationConfigurationScript"></script>
+    <script src="~/Abp/ServiceProxyScript"></script>
+
+    @await RenderSectionAsync("scripts", false)
+
+    @await Component.InvokeAsync(typeof(WidgetScriptsViewComponent))
+
+    @await Component.InvokeLayoutHookAsync(LayoutHooks.Body.Last, StandardLayouts.Account)
+</body>
+</html>

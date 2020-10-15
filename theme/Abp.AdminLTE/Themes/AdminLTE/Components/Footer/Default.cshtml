@@ -1,0 +1,19 @@
+﻿@using Abp.AspNetCore.Mvc.UI.Theme.AdminLTE.Localization
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared.Components
+@inject IBrandingProvider BrandingProvider
+@inject IHtmlLocalizer<AdminLTEResource> TL
+
+@{
+    string copyrightAuthor = (string) ViewData["CopyrightAuthor"] ?? BrandingProvider.AppName;
+    string copyrightUrl = (string) ViewData["CopyrightUrl"];
+    string version = (string) ViewData["Version"] ?? "1.0";
+}
+
+<footer class="main-footer">
+    <strong>Copyright &copy; 2014-@DateTime.Now.Year <a href="@copyrightUrl">@copyrightAuthor</a>.</strong>
+    @TL["AllRightsReserved"]
+    <div class="float-right d-none d-sm-inline-block">
+        <b>@TL["Version"]</b> @version
+    </div>
+</footer>

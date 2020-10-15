@@ -1,0 +1,16 @@
+﻿div.dataTable_filters {
+    display: none;
+}
+
+div.dataTables_wrapper div.dataTables_length label {
+    margin-bottom: 0;
+    margin-top: 12px;
+}
+
+.dataTables_scrollBody {
+    min-height: 248px;
+}
+
+/*footer.main-footer {
+    margin-top: -16px;
+}*/

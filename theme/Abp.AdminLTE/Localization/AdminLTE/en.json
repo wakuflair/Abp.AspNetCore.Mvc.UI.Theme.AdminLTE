@@ -1,0 +1,10 @@
+{
+  "culture": "en",
+  "texts": {
+    "Nav:Home": "Home",
+    "Nav:Contact": "Contact",
+    "Input:Search": "Search",
+    "AllRightsReserved": "All rights reserved",
+    "Version": "Version",
+  }
+}

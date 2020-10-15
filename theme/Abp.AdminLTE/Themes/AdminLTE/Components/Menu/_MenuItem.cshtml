@@ -1,0 +1,33 @@
+﻿@using Volo.Abp.UI.Navigation
+@model ApplicationMenuItem
+@if (Model.IsLeaf)
+{
+    if (Model.Url != null)
+    {
+        var linkUrl = string.IsNullOrEmpty(Model.Url) ? "#" : Url.Content(Model.Url);
+        <li class="nav-item">
+            <a href="@linkUrl" class="nav-link @Model.CssClass">
+                <i class="far @Model.Icon nav-icon"></i>
+                <p>@Model.DisplayName</p>
+            </a>
+        </li>
+    }
+}
+else
+{
+    <li class="nav-item has-treeview @Model.CssClass">
+        <a href="#" class="nav-link">
+            <i class="far @Model.Icon nav-icon"></i>
+            <p>
+                @Model.DisplayName
+            <i class="fas fa-angle-left right"></i>
+        </p>
+    </a>
+    <ul class="nav nav-treeview">
+        @foreach (var childMenuItem in Model.Items)
+        {
+            @await Html.PartialAsync("~/Themes/AdminLTE/Components/Menu/_MenuItem.cshtml", childMenuItem)
+        }
+    </ul>
+</li>
+}
