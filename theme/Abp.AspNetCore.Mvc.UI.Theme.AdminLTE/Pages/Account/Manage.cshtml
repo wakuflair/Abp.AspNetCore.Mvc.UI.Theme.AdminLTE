@@ -20,9 +20,7 @@
     var isEmailUpdateEnabled = string.Equals(await SettingManager.GetOrNullAsync(IdentitySettingNames.User.IsEmailUpdateEnabled), "true",
         StringComparison.OrdinalIgnoreCase);
 }
-@section scripts {
-    <abp-script src="/Pages/Account/Manage.js" />
-}
+
 <section class="content-header">
     <div class="container-fluid">
         <div class="row mb-2">
@@ -47,12 +45,13 @@
                         <abp-tabs tab-style="PillVertical">
                             @foreach (var item in Model.ProfileManagementPageCreationContext.Groups)
                             {
-                                <abp-tab title="@item.DisplayName" itemid="@item.Id">
-                                    <h4>@item.DisplayName</h4>
+                            <abp-tab title="@item.DisplayName" itemid="@item.Id">
+                                <h4>@item.DisplayName</h4>
 
-                                    @Component.InvokeAsync(item.ComponentType, item.Parameter)
+                                @await Component.InvokeAsync(item.ComponentType, item.Parameter)
+                                
 
-                                </abp-tab>
+                            </abp-tab>
                             }
                         </abp-tabs>
                     </abp-card-body>
