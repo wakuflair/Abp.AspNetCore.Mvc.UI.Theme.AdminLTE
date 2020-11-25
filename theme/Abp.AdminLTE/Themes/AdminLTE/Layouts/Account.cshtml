@@ -54,15 +54,18 @@
         <div class="login-logo">
             <a href="javascript:;">
                 <div style="margin-bottom: 12px;">
-                    <img class="img" src="@BrandingProvider.LogoUrl" style="width: 100%; max-width: 100px;">
+                    <img class="img" src="/img/logo-bb.svg" style="width: 100%; max-width: 100px;">
                 </div>
-                <p class="title-project"> @Html.Raw(BrandingProvider.AppName)</p>
+                <p class="title-project">
+                    Hệ thống quản lý HỌC VIÊN
+                    Cơ sở xã hội Bầu Bàng
+                </p>
             </a>
         </div>
         @(await Component.InvokeAsync<PageAlertsViewComponent>())
 
         @if (MultiTenancyOptions.Value.IsEnabled &&
-         (TenantResolveResultAccessor.Result?.AppliedResolvers?.Contains(CookieTenantResolveContributor.ContributorName) == true))
+       (TenantResolveResultAccessor.Result?.AppliedResolvers?.Contains(CookieTenantResolveContributor.ContributorName) == true))
         {
             <a id="AbpTenantSwitchLink" href="javascript:;" class="btn btn-block btn-social bg-gradient-success" style="margin-bottom: 10px;">
                 <i class="fa fa-group" style="font-size: 1.2em;"></i> @MultiTenancyStringLocalizer["Tenant"]
@@ -88,8 +91,15 @@
                 @RenderBody()
             </div>
         </div>
-        <p class="copyright-text">@Html.Raw(BrandingProvider.AppName)</p>
         <!-- /.login-box-body -->
+    </div>
+    <div class="copyright-text">
+        <p>
+            Cơ sở xã hội Bầu Bàng thành phố Đà Nẵng - Địa chỉ: Thôn Lộc Mỹ, Xã Hòa Bắc, Huyện Hòa Vang, Thành phố Đà Nẵng
+        </p>
+        <p>
+            © 2020 Bản quyền thuộc Sở Lao động, Thương binh và Xã hội thành phố Đà Nẵng
+        </p>
     </div>
 
     <abp-script-bundle name="@AdminLTEThemeBundles.Scripts.Global" />
