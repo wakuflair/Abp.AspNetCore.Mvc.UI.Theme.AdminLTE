@@ -15,7 +15,6 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <IsPackable>true</IsPackable>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <Version>1.1.0-pre.1</Version>
   </PropertyGroup>
 
   <ItemGroup>
