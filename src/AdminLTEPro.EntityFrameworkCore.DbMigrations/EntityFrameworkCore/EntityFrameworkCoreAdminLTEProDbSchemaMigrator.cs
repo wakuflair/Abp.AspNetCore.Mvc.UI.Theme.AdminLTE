@@ -1,24 +1,35 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using AdminLTEPro.Data;
 using Volo.Abp.DependencyInjection;
 
 namespace AdminLTEPro.EntityFrameworkCore
 {
-    [Dependency(ReplaceServices = true)]
-    public class EntityFrameworkCoreAdminLTEProDbSchemaMigrator 
+    public class EntityFrameworkCoreAdminLTEProDbSchemaMigrator
         : IAdminLTEProDbSchemaMigrator, ITransientDependency
     {
-        private readonly AdminLTEProMigrationsDbContext _dbContext;
+        private readonly IServiceProvider _serviceProvider;
 
-        public EntityFrameworkCoreAdminLTEProDbSchemaMigrator(AdminLTEProMigrationsDbContext dbContext)
+        public EntityFrameworkCoreAdminLTEProDbSchemaMigrator(
+            IServiceProvider serviceProvider)
         {
-            _dbContext = dbContext;
+            _serviceProvider = serviceProvider;
         }
 
         public async Task MigrateAsync()
         {
-            await _dbContext.Database.MigrateAsync();
+            /* We intentionally resolving the AdminLTEProMigrationsDbContext
+             * from IServiceProvider (instead of directly injecting it)
+             * to properly get the connection string of the current tenant in the
+             * current scope.
+             */
+
+            await _serviceProvider
+                .GetRequiredService<AdminLTEProMigrationsDbContext>()
+                .Database
+                .MigrateAsync();
         }
     }
 }

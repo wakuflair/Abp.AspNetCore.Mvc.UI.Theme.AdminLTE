@@ -5,6 +5,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <RootNamespace>AdminLTEPro</RootNamespace>
+    <GenerateEmbeddedFilesManifest>true</GenerateEmbeddedFilesManifest>
   </PropertyGroup>
 
   <ItemGroup>
@@ -21,6 +22,10 @@
   <ItemGroup>
     <EmbeddedResource Include="Localization\AdminLTEPro\*.json" />
     <Content Remove="Localization\AdminLTEPro\*.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="5.0.0" />
   </ItemGroup>
 
 </Project>

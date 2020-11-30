@@ -5,6 +5,7 @@ using Volo.Abp.FeatureManagement;
 using Volo.Abp.Identity;
 using Volo.Abp.IdentityServer;
 using Volo.Abp.Localization;
+using Volo.Abp.Localization.ExceptionHandling;
 using Volo.Abp.Modularity;
 using Volo.Abp.PermissionManagement;
 using Volo.Abp.SettingManagement;
@@ -26,11 +27,17 @@ namespace AdminLTEPro
         )]
     public class AdminLTEProDomainSharedModule : AbpModule
     {
+        public override void PreConfigureServices(ServiceConfigurationContext context)
+        {
+            AdminLTEProGlobalFeatureConfigurator.Configure();
+            AdminLTEProModuleExtensionConfigurator.Configure();
+        }
+
         public override void ConfigureServices(ServiceConfigurationContext context)
         {
             Configure<AbpVirtualFileSystemOptions>(options =>
             {
-                options.FileSets.AddEmbedded<AdminLTEProDomainSharedModule>("AdminLTEPro");
+                options.FileSets.AddEmbedded<AdminLTEProDomainSharedModule>();
             });
 
             Configure<AbpLocalizationOptions>(options =>
@@ -39,6 +46,13 @@ namespace AdminLTEPro
                     .Add<AdminLTEProResource>("en")
                     .AddBaseTypes(typeof(AbpValidationResource))
                     .AddVirtualJson("/Localization/AdminLTEPro");
+
+                options.DefaultResourceType = typeof(AdminLTEProResource);
+            });
+
+            Configure<AbpExceptionLocalizationOptions>(options =>
+            {
+                options.MapCodeNamespace("AdminLTEPro", typeof(AdminLTEProResource));
             });
         }
     }

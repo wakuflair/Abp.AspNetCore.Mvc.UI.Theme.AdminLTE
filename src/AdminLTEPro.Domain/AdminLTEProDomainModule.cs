@@ -1,6 +1,9 @@
-﻿using AdminLTEPro.MultiTenancy;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
+using AdminLTEPro.MultiTenancy;
 using Volo.Abp.AuditLogging;
 using Volo.Abp.BackgroundJobs;
+using Volo.Abp.Emailing;
 using Volo.Abp.FeatureManagement;
 using Volo.Abp.Identity;
 using Volo.Abp.IdentityServer;
@@ -23,8 +26,9 @@ namespace AdminLTEPro
         typeof(AbpIdentityServerDomainModule),
         typeof(AbpPermissionManagementDomainIdentityServerModule),
         typeof(AbpSettingManagementDomainModule),
-        typeof(AbpTenantManagementDomainModule)
-        )]
+        typeof(AbpTenantManagementDomainModule),
+        typeof(AbpEmailingModule)
+    )]
     public class AdminLTEProDomainModule : AbpModule
     {
         public override void ConfigureServices(ServiceConfigurationContext context)
@@ -33,6 +37,10 @@ namespace AdminLTEPro
             {
                 options.IsEnabled = MultiTenancyConsts.IsEnabled;
             });
+
+#if DEBUG
+            context.Services.Replace(ServiceDescriptor.Singleton<IEmailSender, NullEmailSender>());
+#endif
         }
     }
 }

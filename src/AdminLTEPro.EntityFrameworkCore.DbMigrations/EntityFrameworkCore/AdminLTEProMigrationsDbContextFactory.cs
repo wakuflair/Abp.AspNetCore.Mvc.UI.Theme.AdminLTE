@@ -11,6 +11,8 @@ namespace AdminLTEPro.EntityFrameworkCore
     {
         public AdminLTEProMigrationsDbContext CreateDbContext(string[] args)
         {
+            AdminLTEProEfCoreEntityExtensionMappings.Configure();
+
             var configuration = BuildConfiguration();
 
             var builder = new DbContextOptionsBuilder<AdminLTEProMigrationsDbContext>()
@@ -22,7 +24,7 @@ namespace AdminLTEPro.EntityFrameworkCore
         private static IConfigurationRoot BuildConfiguration()
         {
             var builder = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
+                .SetBasePath(Path.Combine(Directory.GetCurrentDirectory(), "../AdminLTEPro.DbMigrator/"))
                 .AddJsonFile("appsettings.json", optional: false);
 
             return builder.Build();

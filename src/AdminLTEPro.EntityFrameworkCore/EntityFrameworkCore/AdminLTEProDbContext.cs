@@ -3,6 +3,7 @@ using AdminLTEPro.Users;
 using Volo.Abp.Data;
 using Volo.Abp.EntityFrameworkCore;
 using Volo.Abp.EntityFrameworkCore.Modeling;
+using Volo.Abp.Identity;
 using Volo.Abp.Users.EntityFrameworkCore;
 
 namespace AdminLTEPro.EntityFrameworkCore
@@ -39,12 +40,14 @@ namespace AdminLTEPro.EntityFrameworkCore
 
             builder.Entity<AppUser>(b =>
             {
-                b.ToTable("AbpUsers"); //Sharing the same table "AbpUsers" with the IdentityUser
+                b.ToTable(AbpIdentityDbProperties.DbTablePrefix + "Users"); //Sharing the same table "AbpUsers" with the IdentityUser
+                
                 b.ConfigureByConvention();
                 b.ConfigureAbpUser();
 
-                //Moved customization to a method so we can share it with the AdminLTEProMigrationsDbContext class
-                b.ConfigureCustomUserProperties();
+                /* Configure mappings for your additional properties
+                 * Also see the AdminLTEProEfCoreEntityExtensionMappings class
+                 */
             });
 
             /* Configure your own tables/entities inside the ConfigureAdminLTEPro method */

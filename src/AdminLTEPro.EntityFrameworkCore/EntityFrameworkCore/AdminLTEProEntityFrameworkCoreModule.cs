@@ -27,6 +27,11 @@ namespace AdminLTEPro.EntityFrameworkCore
         )]
     public class AdminLTEProEntityFrameworkCoreModule : AbpModule
     {
+        public override void PreConfigureServices(ServiceConfigurationContext context)
+        {
+            AdminLTEProEfCoreEntityExtensionMappings.Configure();
+        }
+
         public override void ConfigureServices(ServiceConfigurationContext context)
         {
             context.Services.AddAbpDbContext<AdminLTEProDbContext>(options =>

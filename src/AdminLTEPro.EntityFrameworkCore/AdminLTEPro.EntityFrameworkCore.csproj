@@ -6,7 +6,7 @@
     <TargetFramework>net5.0</TargetFramework>
     <RootNamespace>AdminLTEPro</RootNamespace>
   </PropertyGroup>
-  
+
   <ItemGroup>
     <ProjectReference Include="..\AdminLTEPro.Domain\AdminLTEPro.Domain.csproj" />
     <PackageReference Include="Volo.Abp.EntityFrameworkCore.SqlServer" Version="4.0.0-rc.4" />
