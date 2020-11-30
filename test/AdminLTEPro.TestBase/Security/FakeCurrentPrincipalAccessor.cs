@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Security.Claims;
 using Volo.Abp.DependencyInjection;
 using Volo.Abp.Security.Claims;
@@ -9,7 +8,7 @@ namespace AdminLTEPro.Security
     [Dependency(ReplaceServices = true)]
     public class FakeCurrentPrincipalAccessor : ThreadCurrentPrincipalAccessor
     {
-        public override ClaimsPrincipal GetClaimsPrincipal()
+        protected override ClaimsPrincipal GetClaimsPrincipal()
         {
             return GetPrincipal();
         }

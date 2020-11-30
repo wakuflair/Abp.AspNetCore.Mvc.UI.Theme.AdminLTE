@@ -26,9 +26,9 @@ namespace AdminLTEPro.Web.Menus
                 administration.TryRemoveMenuItem(TenantManagementMenuNames.GroupName);
             }
 
-            var l = context.ServiceProvider.GetRequiredService<IStringLocalizer<AdminLTEProResource>>();
+            var l = context.GetLocalizer<AdminLTEProResource>();
 
-            context.Menu.Items.Insert(0, new ApplicationMenuItem("AdminLTEPro.Home", l["Menu:Home"], "/"));
+            context.Menu.Items.Insert(0, new ApplicationMenuItem(AdminLTEProMenus.Home, l["Menu:Home"], "~/"));
         }
     }
 }

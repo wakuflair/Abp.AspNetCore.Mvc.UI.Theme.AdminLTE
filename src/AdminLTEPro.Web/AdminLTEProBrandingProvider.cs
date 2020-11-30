@@ -1,4 +1,4 @@
-﻿using Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared.Components;
+﻿using Volo.Abp.Ui.Branding;
 using Volo.Abp.DependencyInjection;
 
 namespace AdminLTEPro.Web
@@ -6,6 +6,6 @@ namespace AdminLTEPro.Web
     [Dependency(ReplaceServices = true)]
     public class AdminLTEProBrandingProvider : DefaultBrandingProvider
     {
-        public override string AppName => "AdminLTE Pro";
+        public override string AppName => "AdminLTEPro";
     }
 }

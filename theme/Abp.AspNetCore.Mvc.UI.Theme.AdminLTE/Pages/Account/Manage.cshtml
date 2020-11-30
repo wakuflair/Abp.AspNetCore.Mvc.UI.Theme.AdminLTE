@@ -5,10 +5,13 @@
 @using Volo.Abp.Settings
 @using Microsoft.AspNetCore.Mvc.Localization
 @using Volo.Abp.AspNetCore.Mvc.UI.Theming
+@using Microsoft.Extensions.Localization
+@using Volo.Abp.Account.Localization
 @inject ISettingProvider SettingManager
 @inject IThemeManager ThemeManager
 @inject IHtmlLocalizer<AdminLTEResource> TL
-@inherits Volo.Abp.Account.Web.Pages.Account.AccountPage
+@inject IStringLocalizer<AccountResource> L
+
 @{
     Layout = ThemeManager.CurrentTheme.GetApplicationLayout();
     var isUserNameUpdateEnabled = string.Equals(await SettingManager.GetOrNullAsync(IdentitySettingNames.User.IsUserNameUpdateEnabled), "true",
@@ -17,9 +20,7 @@
     var isEmailUpdateEnabled = string.Equals(await SettingManager.GetOrNullAsync(IdentitySettingNames.User.IsEmailUpdateEnabled), "true",
         StringComparison.OrdinalIgnoreCase);
 }
-@section scripts {
-    <abp-script src="/Pages/Account/Manage.js" />
-}
+
 <section class="content-header">
     <div class="container-fluid">
         <div class="row mb-2">
@@ -42,35 +43,16 @@
                 <abp-card>
                     <abp-card-body>
                         <abp-tabs tab-style="PillVertical">
-                            <abp-tab title="@L["ChangePassword"].Value">
-                                <h4>@L["ChangePassword"].Value</h4><hr />
-                                <abp-dynamic-form abp-model="@Model.ChangePasswordInfoModel" id="ChangePasswordForm">
-                                    <abp-form-content />
-                                    <abp-button type="submit" button-type="Primary" text="@L["Submit"].Value" />
-                                </abp-dynamic-form>
+                            @foreach (var item in Model.ProfileManagementPageCreationContext.Groups)
+                            {
+                            <abp-tab title="@item.DisplayName" itemid="@item.Id">
+                                <h4>@item.DisplayName</h4>
+
+                                @await Component.InvokeAsync(item.ComponentType, item.Parameter)
+                                
+
                             </abp-tab>
-                            <abp-tab title="@L["PersonalSettings"].Value">
-                                <h4>@L["PersonalSettings"].Value</h4><hr />
-                                <form method="post" id="PersonalSettingsForm">
-
-                                    <abp-input asp-for="PersonalSettingsInfoModel.UserName" readonly="!isUserNameUpdateEnabled" />
-
-                                    <abp-row>
-                                        <abp-column size-md="_6">
-                                            <abp-input asp-for="PersonalSettingsInfoModel.Name" />
-                                        </abp-column>
-                                        <abp-column size-md="_6">
-                                            <abp-input asp-for="PersonalSettingsInfoModel.Surname" />
-                                        </abp-column>
-                                    </abp-row>
-
-                                    <abp-input asp-for="PersonalSettingsInfoModel.Email" readonly="!isEmailUpdateEnabled" />
-
-                                    <abp-input asp-for="PersonalSettingsInfoModel.PhoneNumber" />
-
-                                    <abp-button type="submit" button-type="Primary" text="@L["Submit"].Value" />
-                                </form>
-                            </abp-tab>
+                            }
                         </abp-tabs>
                     </abp-card-body>
                 </abp-card>

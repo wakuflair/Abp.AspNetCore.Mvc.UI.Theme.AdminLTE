@@ -6,7 +6,7 @@
 @using Volo.Abp.AspNetCore.Mvc.AntiForgery
 @using Volo.Abp.AspNetCore.Mvc.UI.Components.LayoutHook
 @using Volo.Abp.AspNetCore.Mvc.UI.MultiTenancy.Localization
-@using Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared.Components
+@using Volo.Abp.Ui.Branding;
 @using Volo.Abp.AspNetCore.Mvc.UI.Theming
 @using Volo.Abp.AspNetCore.Mvc.UI.Widgets.Components.WidgetScripts
 @using Volo.Abp.AspNetCore.Mvc.UI.Widgets.Components.WidgetStyles
@@ -56,7 +56,7 @@
         @(await Component.InvokeAsync<PageAlertsViewComponent>())
 
         @if (MultiTenancyOptions.Value.IsEnabled &&
-             (TenantResolveResultAccessor.Result?.AppliedResolvers?.Contains(CookieTenantResolveContributor.ContributorName) == true))
+            (TenantResolveResultAccessor.Result?.AppliedResolvers?.Contains(CookieTenantResolveContributor.ContributorName) == true))
         {
             <a id="AbpTenantSwitchLink" href="javascript:;" class="btn btn-block btn-social bg-gradient-success" style="margin-bottom: 10px;">
                 <i class="fa fa-group" style="font-size: 1.2em;"></i> @MultiTenancyStringLocalizer["Tenant"]

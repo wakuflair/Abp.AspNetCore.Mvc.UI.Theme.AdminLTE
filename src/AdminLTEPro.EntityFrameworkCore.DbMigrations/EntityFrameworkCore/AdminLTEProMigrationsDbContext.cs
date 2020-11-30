@@ -19,7 +19,7 @@ namespace AdminLTEPro.EntityFrameworkCore
      */
     public class AdminLTEProMigrationsDbContext : AbpDbContext<AdminLTEProMigrationsDbContext>
     {
-        public AdminLTEProMigrationsDbContext(DbContextOptions<AdminLTEProMigrationsDbContext> options)
+        public AdminLTEProMigrationsDbContext(DbContextOptions<AdminLTEProMigrationsDbContext> options) 
             : base(options)
         {
 
@@ -36,20 +36,9 @@ namespace AdminLTEPro.EntityFrameworkCore
             builder.ConfigureBackgroundJobs();
             builder.ConfigureAuditLogging();
             builder.ConfigureIdentity();
-            builder.ConfigureIdentityServer((opts) =>
-            {
-                // DOTO: IdentityServer 需要设定数据提供者
-                opts.DatabaseProvider = EfCoreDatabaseProvider.MySql;
-            });
+            builder.ConfigureIdentityServer();
             builder.ConfigureFeatureManagement();
             builder.ConfigureTenantManagement();
-
-            /* Configure customizations for entities from the modules included  */
-
-            builder.Entity<IdentityUser>(b =>
-            {
-                b.ConfigureCustomUserProperties();
-            });
 
             /* Configure your own tables/entities inside the ConfigureAdminLTEPro method */
 

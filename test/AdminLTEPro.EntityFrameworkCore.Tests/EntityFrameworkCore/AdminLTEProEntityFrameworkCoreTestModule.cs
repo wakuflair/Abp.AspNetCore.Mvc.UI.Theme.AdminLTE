@@ -5,13 +5,15 @@ using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp;
 using Volo.Abp.EntityFrameworkCore;
+using Volo.Abp.EntityFrameworkCore.Sqlite;
 using Volo.Abp.Modularity;
 
 namespace AdminLTEPro.EntityFrameworkCore
 {
     [DependsOn(
         typeof(AdminLTEProEntityFrameworkCoreDbMigrationsModule),
-        typeof(AdminLTEProTestBaseModule)
+        typeof(AdminLTEProTestBaseModule),
+        typeof(AbpEntityFrameworkCoreSqliteModule)
         )]
     public class AdminLTEProEntityFrameworkCoreTestModule : AbpModule
     {
@@ -28,7 +30,10 @@ namespace AdminLTEPro.EntityFrameworkCore
 
             services.Configure<AbpDbContextOptions>(options =>
             {
-                options.Configure(context => { context.DbContextOptions.UseSqlite(_sqliteConnection); });
+                options.Configure(context =>
+                {
+                    context.DbContextOptions.UseSqlite(_sqliteConnection);
+                });
             });
         }
 

@@ -1,6 +1,9 @@
-﻿using Volo.Abp.Account;
+﻿using Localization.Resources.AbpUi;
+using AdminLTEPro.Localization;
+using Volo.Abp.Account;
 using Volo.Abp.FeatureManagement;
 using Volo.Abp.Identity;
+using Volo.Abp.Localization;
 using Volo.Abp.Modularity;
 using Volo.Abp.PermissionManagement.HttpApi;
 using Volo.Abp.TenantManagement;
@@ -17,6 +20,21 @@ namespace AdminLTEPro
         )]
     public class AdminLTEProHttpApiModule : AbpModule
     {
-        
+        public override void ConfigureServices(ServiceConfigurationContext context)
+        {
+            ConfigureLocalization();
+        }
+
+        private void ConfigureLocalization()
+        {
+            Configure<AbpLocalizationOptions>(options =>
+            {
+                options.Resources
+                    .Get<AdminLTEProResource>()
+                    .AddBaseTypes(
+                        typeof(AbpUiResource)
+                    );
+            });
+        }
     }
 }
