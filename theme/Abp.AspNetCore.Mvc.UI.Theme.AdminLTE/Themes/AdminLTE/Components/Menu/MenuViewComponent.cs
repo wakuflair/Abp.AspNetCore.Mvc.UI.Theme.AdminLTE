@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Volo.Abp.AspNetCore.Mvc;
+using Volo.Abp.AspNetCore.Mvc.UI.Layout;
 using Volo.Abp.UI.Navigation;
 
 namespace Abp.AspNetCore.Mvc.UI.Theme.AdminLTE.Themes.AdminLTE.Components.Menu
@@ -9,35 +11,36 @@ namespace Abp.AspNetCore.Mvc.UI.Theme.AdminLTE.Themes.AdminLTE.Components.Menu
     public class MenuViewComponent : AbpViewComponent
     {
         private readonly IMenuManager _menuManager;
-
-        public MenuViewComponent(IMenuManager menuManager)
+        protected IPageLayout PageLayout { get; }
+        public MenuViewComponent(IMenuManager menuManager, IPageLayout pageLayout)
         {
             _menuManager = menuManager;
+            PageLayout = pageLayout;
         }
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            //获取当前页地址
-            var pageUrl = RouteData.Values["page"];
             var menu = await _menuManager.GetAsync(StandardMenus.Main);
-            SetMenuItemActivateCssClass(pageUrl.ToString(), parentMenu: menu);
+            
+            if (!PageLayout.Content.MenuItemName.IsNullOrEmpty())
+            {
+                SetActiveMenuItems(menu.Items, PageLayout.Content.MenuItemName);
+            }
             return View("~/Themes/AdminLTE/Components/Menu/Default.cshtml", menu);
         }
 
-        void SetMenuItemActivateCssClass(string pageUrl, ApplicationMenuItem menuItem = null, ApplicationMenu parentMenu = null)
+        protected virtual bool SetActiveMenuItems(ApplicationMenuItemList items, string activeMenuItemName)
         {
-            ApplicationMenuItemList withItems = menuItem?.Items ?? parentMenu?.Items;
-
-            withItems.ForEach(m =>
+            foreach (var item in items)
             {
-                if (m.Url != null && string.Compare(pageUrl, $"{m.Url}/index", StringComparison.InvariantCultureIgnoreCase) == 0)
+                if (item.Name == activeMenuItemName || SetActiveMenuItems(item.Items, activeMenuItemName))
                 {
-                    m.CssClass = "active";
-                    // 存在父级
-                    if (menuItem != null) menuItem.CssClass = "active menu-open";
+                    item.CssClass = "active menu-open";
+                    return true;
                 }
-                SetMenuItemActivateCssClass(pageUrl, m, parentMenu);
-            });
+            }
+
+            return false;
         }
     }
 }

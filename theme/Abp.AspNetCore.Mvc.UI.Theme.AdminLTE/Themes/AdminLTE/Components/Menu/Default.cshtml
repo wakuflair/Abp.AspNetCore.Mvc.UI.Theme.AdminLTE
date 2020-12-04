@@ -60,7 +60,7 @@
                     {
                         var isActive = menuItem.Items.Exists(x => !string.IsNullOrEmpty(x.CssClass) && x.CssClass.Contains("active"));
                         <li class="nav-item has-treeview @(isActive ? "menu-open" : "")">
-                            <a href="#" class="nav-link @(isActive ? "active" : "")">
+                            <a href="#" class="nav-link @(isActive ? "active" : "")" id="Menu_@(menuItem.Name)">
                                 <i class="@menuItem.Icon"></i>
                                 <p>
                                     @menuItem.DisplayName
