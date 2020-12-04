@@ -47,7 +47,7 @@ namespace AdminLTEPro.Web
         typeof(AbpAutofacModule),
         typeof(AbpIdentityWebModule),
         typeof(AbpAccountWebIdentityServerModule),
-        //typeof(AbpAspNetCoreMvcUiBasicThemeModule),
+        // typeof(AbpAspNetCoreMvcUiBasicThemeModule),
         typeof(AbpAspNetCoreMvcUiAdminLTEThemeModule),
         typeof(AbpAspNetCoreAuthenticationJwtBearerModule),
         typeof(AbpTenantManagementWebModule),
@@ -134,11 +134,16 @@ namespace AdminLTEPro.Web
             {
                 Configure<AbpVirtualFileSystemOptions>(options =>
                 {
-                    options.FileSets.ReplaceEmbeddedByPhysical<AdminLTEProDomainSharedModule>(Path.Combine(hostingEnvironment.ContentRootPath, $"..{Path.DirectorySeparatorChar}AdminLTEPro.Domain.Shared"));
-                    options.FileSets.ReplaceEmbeddedByPhysical<AdminLTEProDomainModule>(Path.Combine(hostingEnvironment.ContentRootPath, $"..{Path.DirectorySeparatorChar}AdminLTEPro.Domain"));
-                    options.FileSets.ReplaceEmbeddedByPhysical<AdminLTEProApplicationContractsModule>(Path.Combine(hostingEnvironment.ContentRootPath, $"..{Path.DirectorySeparatorChar}AdminLTEPro.Application.Contracts"));
-                    options.FileSets.ReplaceEmbeddedByPhysical<AdminLTEProApplicationModule>(Path.Combine(hostingEnvironment.ContentRootPath, $"..{Path.DirectorySeparatorChar}AdminLTEPro.Application"));
-                    options.FileSets.ReplaceEmbeddedByPhysical<AdminLTEProWebModule>(hostingEnvironment.ContentRootPath);
+                    var sept = Path.DirectorySeparatorChar;
+                    var rootPath = hostingEnvironment.ContentRootPath;
+                    options.FileSets.ReplaceEmbeddedByPhysical<AdminLTEProDomainSharedModule>(Path.Combine(rootPath, $"..{sept}AdminLTEPro.Domain.Shared"));
+                    options.FileSets.ReplaceEmbeddedByPhysical<AdminLTEProDomainModule>(Path.Combine(rootPath, $"..{sept}AdminLTEPro.Domain"));
+                    options.FileSets.ReplaceEmbeddedByPhysical<AdminLTEProApplicationContractsModule>(Path.Combine(rootPath, $"..{sept}AdminLTEPro.Application.Contracts"));
+                    options.FileSets.ReplaceEmbeddedByPhysical<AdminLTEProApplicationModule>(Path.Combine(rootPath, $"..{sept}AdminLTEPro.Application"));
+                    options.FileSets.ReplaceEmbeddedByPhysical<AdminLTEProWebModule>(rootPath);
+                    
+                    // Add theme virtual files
+                    options.FileSets.ReplaceEmbeddedByPhysical<AbpAspNetCoreMvcUiAdminLTEThemeModule>(Path.Combine(rootPath, $"..{sept}..{sept}theme{sept}Abp.AspNetCore.Mvc.UI.Theme.AdminLTE"));
                 });
             }
         }

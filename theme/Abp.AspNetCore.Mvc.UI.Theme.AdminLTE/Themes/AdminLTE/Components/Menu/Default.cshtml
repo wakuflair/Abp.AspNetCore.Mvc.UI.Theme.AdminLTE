@@ -39,15 +39,19 @@
                      with font-awesome or any other icon font library -->
                 @foreach (var menuItem in Model.Items)
                 {
-                    if (menuItem.Url == "/") continue;
+                    if (menuItem.Url == "/")
+                    {
+                        continue;
+                    }
 
                     var elementId = string.IsNullOrEmpty(menuItem.ElementId) ? string.Empty : $"id=\"{menuItem.ElementId}\"";
                     var cssClass = string.IsNullOrEmpty(menuItem.CssClass) ? string.Empty : menuItem.CssClass;
                     var disabled = menuItem.IsDisabled ? "disabled" : string.Empty;
+                    var url = string.IsNullOrEmpty(menuItem.Url) ? "#" : Url.Content(menuItem.Url);
                     if (menuItem.IsLeaf)
                     {
-                        <li class="nav-item @menuItem.CssClass">
-                            <a href="@(menuItem.Url ?? "#")" class="nav-link">
+                        <li class="nav-item @cssClass @disabled" @elementId>
+                            <a class="nav-link" href="@url" target="@menuItem.Target">
                                 <i class="nav-icon @menuItem.Icon"></i> <p>@menuItem.DisplayName</p>
                             </a>
                         </li>

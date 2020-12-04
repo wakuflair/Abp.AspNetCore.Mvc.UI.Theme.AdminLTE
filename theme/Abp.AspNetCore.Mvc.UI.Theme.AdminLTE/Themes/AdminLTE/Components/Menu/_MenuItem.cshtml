@@ -1,11 +1,17 @@
 ﻿@using Volo.Abp.UI.Navigation
 @model ApplicationMenuItem
+@{
+    var elementId = string.IsNullOrEmpty(Model.ElementId) ? string.Empty : $"id=\"{Model.ElementId}\"";
+    var cssClass = string.IsNullOrEmpty(Model.CssClass) ? string.Empty : Model.CssClass;
+    var disabled = Model.IsDisabled ? "disabled" : string.Empty;
+    var url = string.IsNullOrEmpty(Model.Url) ? "#" : Url.Content(Model.Url);
+}
 @if (Model.IsLeaf)
 {
     if (Model.Url != null)
     {
         <li class="nav-item">
-            <a href="@(Model.Url ?? "#")" class="nav-link @Model.CssClass">
+            <a class="nav-link @cssClass @disabled" href="@url" target="@Model.Target" @Html.Raw(elementId)>
                 <i class="far @Model.Icon nav-icon"></i>
                 <p>@Model.DisplayName</p>
             </a>
@@ -14,7 +20,7 @@
 }
 else
 {
-    <li class="nav-item has-treeview @Model.CssClass">
+    <li class="nav-item has-treeview @cssClass">
         <a href="#" class="nav-link">
             <i class="far @Model.Icon nav-icon"></i>
             <p>
