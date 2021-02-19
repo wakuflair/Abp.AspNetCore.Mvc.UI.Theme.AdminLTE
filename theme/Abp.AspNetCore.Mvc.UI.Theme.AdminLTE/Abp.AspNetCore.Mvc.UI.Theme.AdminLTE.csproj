@@ -31,11 +31,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Volo.Abp.Account.Web.IdentityServer" Version="4.0.0" />
-    <PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.MultiTenancy" Version="4.0.0" />
-    <PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared" Version="4.0.0" />
-    <PackageReference Include="Volo.Abp.Identity.Web" Version="4.0.0" />
-    <PackageReference Include="Volo.Abp.TenantManagement.Web" Version="4.0.0" />
+    <PackageReference Include="Volo.Abp.Account.Web.IdentityServer" Version="4.2.1" />
+    <PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.MultiTenancy" Version="4.2.1" />
+    <PackageReference Include="Volo.Abp.AspNetCore.Mvc.UI.Theme.Shared" Version="4.2.1" />
+    <PackageReference Include="Volo.Abp.Identity.Web" Version="4.2.1" />
+    <PackageReference Include="Volo.Abp.TenantManagement.Web" Version="4.2.1" />
   </ItemGroup>
 
 </Project>
