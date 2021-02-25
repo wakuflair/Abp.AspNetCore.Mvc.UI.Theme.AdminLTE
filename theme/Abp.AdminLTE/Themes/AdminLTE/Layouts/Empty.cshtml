@@ -16,7 +16,6 @@
     var containerClass = ViewBag.FluidLayout == true ? "container-fluid" : "container"; //TODO: Better and type-safe options
 
     var pageTitle = ViewBag.Title == null ? BrandingProvider.AppName : ViewBag.Title; //TODO: Discard to get from Title
-
     if (PageLayout.Content.Title != null)
     {
         if (!string.IsNullOrWhiteSpace(pageTitle))
@@ -37,7 +36,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
+    <link rel="icon" type="image/png" href="/img/logo-bb.png">
     <title>@pageTitle</title>
 
     <abp-style-bundle name="@AdminLTEThemeBundles.Styles.Global" />
