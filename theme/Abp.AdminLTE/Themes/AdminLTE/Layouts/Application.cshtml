@@ -11,15 +11,17 @@
 @using Volo.Abp.AspNetCore.Mvc.UI.Theming
 @using Volo.Abp.AspNetCore.Mvc.UI.Widgets.Components.WidgetScripts
 @using Volo.Abp.AspNetCore.Mvc.UI.Widgets.Components.WidgetStyles
+@using Microsoft.Extensions.Configuration
 @inject IAbpAntiForgeryManager AbpAntiForgeryManager
 @inject IBrandingProvider BrandingProvider
 @inject IPageLayout PageLayout
+@inject IConfiguration configuration
 @{
     Layout = null;
     AbpAntiForgeryManager.SetCookie();
 
     var pageTitle = ViewBag.Title == null ? BrandingProvider.AppName : ViewBag.Title; //TODO: Discard to get from Title
-
+    var pageIcon = string.IsNullOrWhiteSpace(configuration["Settings:LogoUrl"]) ? BrandingProvider.LogoUrl : configuration["Settings:LogoUrl"];
     if (PageLayout.Content.Title != null)
     {
         if (!string.IsNullOrWhiteSpace(pageTitle))
@@ -41,7 +43,7 @@
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="icon" type="image/png" href="/img/logo-bb.png">
+    <link rel="icon" type="image/png" href="@pageIcon">
     <title>@pageTitle</title>
 
     <abp-style-bundle name="@AdminLTEThemeBundles.Styles.Global" />
@@ -62,7 +64,6 @@
 
     <div class="wrapper">
         @(await Component.InvokeAsync<HeaderViewComponent>())
-
         @(await Component.InvokeAsync<MenuViewComponent>())
 
         <div class="content-wrapper">
@@ -70,7 +71,6 @@
         </div>
 
         @(await Component.InvokeAsync<FooterViewComponent>())
-
         @(await Component.InvokeAsync<ControlSidebarViewComponent>())
     </div>
 
